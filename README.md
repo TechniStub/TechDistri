@@ -1,5 +1,6 @@
 # TechDistri
  ---------------   DEVELOPPEMENT EN COURS CODE NON ACCESSIBLE POUR LE MOMENT   ---------------
+
 Distributeur automatique du Technistub créé avec la particpation de Christophe de Sabbata, Morgan Jourdin, Guillaume Strub et Vincent Sahler
 
 Ceci est le code du distributeur du technistub, il est écrit pour correspondre avec un écran tactile 7" Raspberry Pi officiel et un Raspberry Pi 3
