@@ -6,23 +6,25 @@ class UserHandler():
         self.root = root
         self.isSelected = False
         self.logoTs = image
-        self.selected = 0
-        self.poproot = None
-
-    def clearTk(self, toClr): # definition de la fonction d' éfacage du gui
-        for widget in toClr.winfo_children():
-            widget.destroy()
+        self.selection = {}
 
     def cancel(self):
         print("Cancel")
-        self.clearTk(self.poproot)
         self.poproot.destroy()
-        print(self.poproot)
 
     def validate(self):
         pass
 
+    def changeQty(self, pos):
+        self.selection["qty"] = pos+1
+        self.qtyButtons[pos]["background"] = "#eaeaea"
+
+        for index in range(self.zSize):
+            if(index != pos):
+                self.qtyButtons[index]["background"] = "#fff"
+
     def touchHandler(self, text):
+        self.x=0
         print("Touched {}{}".format(text[0], text[1]))
         self.ActiveProduct = {}
         # break time !
@@ -33,22 +35,46 @@ class UserHandler():
                 self.ActiveProduct["id"] = -1
 
         if(self.ActiveProduct["id"] != -1):
+            self.selection["product"] = self.ActiveProduct
             self.poproot = tk.Tk()
             self.poproot.configure(background="white")
-            self.poproot.geometry("450x200")
+            self.poproot.geometry("450x250")
             self.poproot.title("Confirmation")
 
             self.lNom = tk.Label(self.poproot, text=self.ActiveProduct["nom"], font=("Arial", 14), bg="#fff")
             self.lNom.place(anchor="nw", x=30, y=30)
 
-            """self.validate = tk.Button(self.poproot, text="Valider", background="#fff", font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.validate)
-            self.validate.place(anchor="se", x=450-30, y=200-30)"""
+            self.lCredit = tk.Label(self.poproot, text="Credit : "+str(self.session["credit"]), font=("Arial", 14), bg="#fff")
+            self.lCredit.place(anchor="nw", x=30, y=60)
 
-            self.cancel = tk.Button(self.poproot, text="Annuler", background="#fff", font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=self.cancel)
-            self.cancel.place(anchor="sw", x=30, y=200-30)
+            self.lUnitPrice = tk.Label(self.poproot, text="Prix unité : "+str(self.ActiveProduct["price"])+" €", font=("Arial", 14), bg="#fff")
+            self.lUnitPrice.place(anchor="nw", x=30, y=90)
+
+            self.validateButton = tk.Button(self.poproot, text="Valider", background="#fff", font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.validate)
+            self.validateButton.place(anchor="se", x=450-30, y=250-30)
+
+            self.cancelButton = tk.Button(self.poproot, text="Annuler", background="#fff", font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.cancel())
+            self.cancelButton.place(anchor="sw", x=30, y=250-30)
+
+            self.zSize = int(self.distriParam["stockRackMax"]["value"])
+            coef = (450-(30*2)) / float(self.zSize)
+            self.qtyButtons = []
+            index = -1
+
+            for posB in range(self.zSize):
+                index += 1
+                xpos = (coef * posB) + 30*2
+                self.qtyButtons.append(tk.Button(self.poproot, text=posB+1, font=("Arial", 14), background="#fff", highlightthickness = 0, bd = 0, bg="#fff", command=lambda pos=posB:self.changeQty(pos)))
+                self.qtyButtons[index].place(anchor="center", x=xpos, y=130)
+
+            self.changeQty(0) # set qty to 1
+
+            self.poproot.update()
 
     def set(self, session, distriParam, products):
         self.products = products
+        self.session = session
+        self.distriParam = distriParam
         self.height = self.root.winfo_screenheight()
         self.width = self.root.winfo_screenwidth()
         self.lachat = tk.Label(self.root, text="Achat", font=("Arial", 18), anchor='center', background="white")
