@@ -37,6 +37,7 @@ sudo apt-get install git
 cd ~
 git clone https://github.com/TechniStub/TechDistri.git
 echo "alias startApp='python3 ~/TechDistri/main.py'" >> ~/.bashrc
+echo "export PYTHONPATH='${PYTHONPATH}:/home/pi/TechDistri/Handlers/MFRC522'" >> ~/.bashrc
 ```
 
 ##### 2.2.2 Dépendences
