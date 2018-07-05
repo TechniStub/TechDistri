@@ -1,5 +1,5 @@
 # TechDistri
-### 1. Description
+## 1. Description
 
 Distributeur automatique du Technistub créé avec la particpation de Christophe de Sabbata, Morgan Jourdin, Guillaume Strub et Vincent Sahler
 
@@ -10,8 +10,8 @@ Il a besoin de :
 
 Le script tourne sous Python 3.5.3 avec une interface Tkinter.
 
-### 2. Installation
-#### 2.1 Système
+## 2. Installation
+### 2.1 Système
 
 Pour tourner l'écran :
 ```
@@ -29,8 +29,8 @@ sudo apt-get install xinput
 sudo echo "DISPLAY=:0.0 xinput --set-prop 'FT5406 memory based driver' 'Coordinate Transformation Matrix' 0 -1 1 1 0 0 0 0 1" >> ~/.profile
 ```
 
-#### 2.2 Programme
-##### 2.2.1 Script
+### 2.2 Programme
+#### 2.2.1 Script
 Pour installer le programme : 
 ```
 sudo apt-get install git
@@ -40,7 +40,7 @@ echo "alias startApp='python3 ~/TechDistri/main.py'" >> ~/.bashrc
 echo "export PYTHONPATH='${PYTHONPATH}:/home/pi/TechDistri/Handlers/MFRC522'" >> ~/.bashrc
 ```
 
-##### 2.2.2 Dépendences
+#### 2.2.2 Dépendences
 ```
 sudo apt-get install python3 pip3
 ```
