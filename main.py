@@ -20,7 +20,7 @@ def Print(data): # redéfinition de print pour qu' il aille dans un fichier de l
 
 Print("[Start]") # On informe que ça démare
 
-dbInst = databaseHandler.DataBaseHandler("/home/pi/dev/Handlers/DataBase/params.xml") # on ouvre une instance des base de donnée avec .xml en config
+dbInst = databaseHandler.DataBaseHandler("/home/pi/TechDistri/Handlers/DataBase/params.xml") # on ouvre une instance des base de donnée avec .xml en config
 queries = dbInst.getAvailableQueries() # on récupere les différentes requetes déja disponible
 _parameters = dbInst.getQuery(queries["getParameters"])
 parameters = {}
@@ -40,17 +40,17 @@ Print("|-- [GUI] Started")
 root.attributes('-fullscreen', True) # on lui affecte l'écran
 root.configure(background="white")
 #ts = tk.PhotoImage(file="Resources/ts.jpg") <- Does not work
-original = Image.open("/home/pi/dev/Resources/ts.jpg") # on ouvre le logo
+original = Image.open("/home/pi/TechDistri/Resources/ts.jpg") # on ouvre le logo
 resized = original.resize((200, 105), Image.ANTIALIAS) # on le redimentionne
 
 ts = ImageTk.PhotoImage(resized) # on le convertit en compatible gui
 
-original = Image.open("/home/pi/dev/Resources/home.jpg") #idem
+original = Image.open("/home/pi/TechDistri/Resources/home.jpg") #idem
 resized = original.resize((47, 47), Image.ANTIALIAS)
 
 home = ImageTk.PhotoImage(resized)
 
-original = Image.open("/home/pi/dev/Resources/exit.png") #idem
+original = Image.open("/home/pi/TechDistri/Resources/exit.png") #idem
 resized = original.resize((47, 47), Image.ANTIALIAS)
 
 exit = ImageTk.PhotoImage(resized)
