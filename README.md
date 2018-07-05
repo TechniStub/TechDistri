@@ -48,6 +48,12 @@ pip3 install spi
 ### 2.3 MySQL
 #### 2.3.1 Installation
 
-Installez une base MySQL
+Installez une base MySQL.
+
 Créez un utilisateur pour la machine 127.0.0.1 uniquement :
   Ces parametres seront renseignés dans le fichier /Handlers/DataBase/params.xml, dans <parameter/>
+
+#### 2.3.2 Configuration
+```
+sudo mysql -u root < ~/TechDistri/deploy.sql
+```
