@@ -11,6 +11,7 @@ Il a besoin de :
 Le script tourne sous Python 3 avec une interface Tkinter.
 
 ### 2. Installation
+#### 2.1 Système
 
 Pour tourner l'écran :
 ```
@@ -28,6 +29,8 @@ sudo apt-get install xinput
 sudo echo "DISPLAY=:0.0 xinput --set-prop 'FT5406 memory based driver' 'Coordinate Transformation Matrix' 0 -1 1 1 0 0 0 0 1" >> ~/.profile
 ```
 
+#### 2.2 Programme
+##### 2.2.1 Script
 Pour installer le programme : 
 ```
 sudo apt-get install git
@@ -35,8 +38,16 @@ cd ~
 git clone https://github.com/TechniStub/TechDistri.git
 echo "alias startApp='python3 ~/TechDistri/main.py'" >> ~/.bashrc
 ```
-Et
+
+##### 2.2.2 Dépendences
 ```
 sudo apt-get install python3 pip3
 pip3 install spi
 ```
+
+### 2.3 MySQL
+#### 2.3.1 Installation
+
+Installez une base MySQL
+Créez un utilisateur pour la machine 127.0.0.1 uniquement :
+  Ces parametres seront renseignés dans le fichier /Handlers/DataBase/params.xml, dans <parameter/>
