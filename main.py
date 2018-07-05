@@ -220,6 +220,11 @@ while True: # boucle infinie
                         products = dbInst.getProducts()
                         handlers["user"]["level1"].set(session, parameters, products)
                         update()
+                        while not handlers["user"]["level1"].validated:
+                            update()
+                        print("Validated")
+
+                        
                     elif(session["adminSelection"] == 2):
                         pass
                     else:

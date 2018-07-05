@@ -8,17 +8,22 @@ class UserHandler():
         self.logoTs = image
         self.selection = {}
         self.selection["qty"] = 1
+        self.selection["total"] = 0
+        self.selection["final"] = 0
+        self.validated = False
 
     def cancel(self):
-        print("Cancel")
         self.poproot.destroy()
 
     def validate(self):
-        pass
+        self.validated = True
+        self.cancel()
 
     def changeQty(self, pos):
         if(pos < self.ActiveProduct["stock"]):
             self.selection["qty"] = pos+1
+            self.selection["total"] = self.selection["qty"] * self.ActiveProduct["price"]
+            self.selection["final"] = self.session["credit"] - self.selection["total"]
             self.qtyButtons[pos]["background"] = "#eaeaea"
 
             for index in range(self.zSize):
@@ -26,7 +31,13 @@ class UserHandler():
                     self.qtyButtons[index]["background"] = "#fff"
 
             self.lQtyChoice["text"]="Qty. Choisie : "+str(self.selection["qty"])
-            self.lQtyChoice.place(anchor="ne", x=450-30, y=30)
+            #self.lQtyChoice.place(anchor="ne", x=450-30, y=30)
+
+            self.lTotal["text"]="Total : "+str(self.selection["total"])+"€"
+            #self.lTotal.place(anchor="ne", x=450-30, y=60)
+
+            self.lCfinal["text"]="Credit final : "+str(self.selection["final"])+"€"
+            #self.lCfinal.place(anchor="ne", x=450-30, y=90)
 
             self.poproot.update()
 
@@ -48,10 +59,10 @@ class UserHandler():
             self.poproot.geometry("450x250")
             self.poproot.title("Confirmation")
 
-            self.lNom = tk.Label(self.poproot, text=self.ActiveProduct["nom"], font=("Arial", 14), bg="#fff")
+            self.lNom = tk.Label(self.poproot, text=self.ActiveProduct["nom"], font=("Arial bold italic", 14), bg="#fff")
             self.lNom.place(anchor="nw", x=30, y=30)
 
-            self.lCredit = tk.Label(self.poproot, text="Credit : "+str(self.session["credit"]), font=("Arial", 14), bg="#fff")
+            self.lCredit = tk.Label(self.poproot, text="Credit : "+str(self.session["credit"])+"€", font=("Arial", 14), bg="#fff")
             self.lCredit.place(anchor="nw", x=30, y=60)
 
             self.lUnitPrice = tk.Label(self.poproot, text="Prix unité : "+str(self.ActiveProduct["price"])+" €", font=("Arial", 14), bg="#fff")
@@ -60,7 +71,13 @@ class UserHandler():
             self.lQtyChoice = tk.Label(self.poproot, text="Qty. Choisie : "+str(self.selection["qty"]), font=("Arial", 14), bg="#fff")
             self.lQtyChoice.place(anchor="ne", x=450-30, y=30)
 
-            self.validateButton = tk.Button(self.poproot, text="Valider", background="#fff", font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.validate)
+            self.lTotal = tk.Label(self.poproot, text="Total : "+str(self.selection["total"])+"€", font=("Arial", 14), bg="#fff")
+            self.lTotal.place(anchor="ne", x=450-30, y=60)
+
+            self.lCfinal = tk.Label(self.poproot, text="Credit final : "+str(self.selection["final"])+"€", font=("Arial", 14), bg="#fff")
+            self.lCfinal.place(anchor="ne", x=450-30, y=90)
+
+            self.validateButton = tk.Button(self.poproot, text="Valider", background="#fff", font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.validate())
             self.validateButton.place(anchor="se", x=450-30, y=250-30)
 
             self.cancelButton = tk.Button(self.poproot, text="Annuler", background="#fff", font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.cancel())
@@ -80,7 +97,7 @@ class UserHandler():
                     color = "#eaeaea"
                     state = "disabled"
                 self.qtyButtons.append(tk.Button(self.poproot, state=state, text=posB+1, font=("Arial", 14), background="#fff", highlightthickness = 0, bd = 0, bg="#fff", command=lambda pos=posB:self.changeQty(pos)))
-                self.qtyButtons[index].place(anchor="center", x=xpos, y=130)
+                self.qtyButtons[index].place(anchor="center", x=xpos, y=150)
 
             self.changeQty(0) # set qty to 1
 
@@ -94,6 +111,12 @@ class UserHandler():
         self.width = self.root.winfo_screenwidth()
         self.lachat = tk.Label(self.root, text="Achat", font=("Arial", 18), anchor='center', background="white")
         self.lachat.place(anchor="center", x=int(self.width/2), y=150)
+
+        self.selection = {}
+        self.selection["qty"] = 1
+        self.selection["total"] = 0
+        self.selection["final"] = 0
+        self.validated = False
 
         self.sizex = int(distriParam["colqty"]["value"])
         self.sizey = int(distriParam["rowqty"]["value"])
@@ -134,7 +157,6 @@ class UserHandler():
                     size = len(self.fuzed[passing-1])
                     if(passing != _passing):
                         _passing = passing
-                        print("Changing")
                         xChanging += 1
                         add = int((size/4.0) * (((self.width-70)/self.sizex)))
 
