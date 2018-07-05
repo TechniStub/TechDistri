@@ -43,8 +43,9 @@ echo "export PYTHONPATH='${PYTHONPATH}:/home/pi/TechDistri/Handlers/MFRC522'" >>
 ##### 2.2.2 Dépendences
 ```
 sudo apt-get install python3 pip3
-pip3 install spi
 ```
+
+Et installez SPI-Py avec python3
 
 ### 2.3 MySQL
 #### 2.3.1 Installation
