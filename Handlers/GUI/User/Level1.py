@@ -7,6 +7,7 @@ class UserHandler():
         self.isSelected = False
         self.logoTs = image
         self.selection = {}
+        self.selection["qty"] = 1
 
     def cancel(self):
         print("Cancel")
@@ -16,12 +17,18 @@ class UserHandler():
         pass
 
     def changeQty(self, pos):
-        self.selection["qty"] = pos+1
-        self.qtyButtons[pos]["background"] = "#eaeaea"
+        if(pos < self.ActiveProduct["stock"]):
+            self.selection["qty"] = pos+1
+            self.qtyButtons[pos]["background"] = "#eaeaea"
 
-        for index in range(self.zSize):
-            if(index != pos):
-                self.qtyButtons[index]["background"] = "#fff"
+            for index in range(self.zSize):
+                if(index != pos):
+                    self.qtyButtons[index]["background"] = "#fff"
+
+            self.lQtyChoice["text"]="Qty. Choisie : "+str(self.selection["qty"])
+            self.lQtyChoice.place(anchor="ne", x=450-30, y=30)
+
+            self.poproot.update()
 
     def touchHandler(self, text):
         self.x=0
@@ -50,6 +57,9 @@ class UserHandler():
             self.lUnitPrice = tk.Label(self.poproot, text="Prix unité : "+str(self.ActiveProduct["price"])+" €", font=("Arial", 14), bg="#fff")
             self.lUnitPrice.place(anchor="nw", x=30, y=90)
 
+            self.lQtyChoice = tk.Label(self.poproot, text="Qty. Choisie : "+str(self.selection["qty"]), font=("Arial", 14), bg="#fff")
+            self.lQtyChoice.place(anchor="ne", x=450-30, y=30)
+
             self.validateButton = tk.Button(self.poproot, text="Valider", background="#fff", font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.validate)
             self.validateButton.place(anchor="se", x=450-30, y=250-30)
 
@@ -60,11 +70,16 @@ class UserHandler():
             coef = (450-(30*2)) / float(self.zSize)
             self.qtyButtons = []
             index = -1
+            color = "#fff"
+            state = "normal"
 
             for posB in range(self.zSize):
                 index += 1
                 xpos = (coef * posB) + 30*2
-                self.qtyButtons.append(tk.Button(self.poproot, text=posB+1, font=("Arial", 14), background="#fff", highlightthickness = 0, bd = 0, bg="#fff", command=lambda pos=posB:self.changeQty(pos)))
+                if(posB >= (self.ActiveProduct["stock"])):
+                    color = "#eaeaea"
+                    state = "disabled"
+                self.qtyButtons.append(tk.Button(self.poproot, state=state, text=posB+1, font=("Arial", 14), background="#fff", highlightthickness = 0, bd = 0, bg="#fff", command=lambda pos=posB:self.changeQty(pos)))
                 self.qtyButtons[index].place(anchor="center", x=xpos, y=130)
 
             self.changeQty(0) # set qty to 1

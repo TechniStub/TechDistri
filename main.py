@@ -120,17 +120,18 @@ session["bypassHome"] = False
 
 while True: # boucle infinie
     if(session["bypassAll"]): # si on est bypassé, on le remet a 0 le bypass et le gui
-        session["bypassAll"]= False
         clearTk(root)
         handlers["admin"]["level1"].isSelected = False
         handlers["admin"]["level1"].selected = 0
         if(session["bypassHome"]):
-            print("go to home")
-            session["bypassHome"] = False
             rfidInst.readed = True
             rfidInst.lastId = session["badgeInProcess"]
+            rfidInst.id = session["badgeInProcess"]
+            print("go to home {} {}".format(rfidInst.readed, rfidInst.lastId))
         else:
             handlers["home"].set()
+            session["bypassAll"]= False # on débypass
+            session["bypassHome"] = False
 
     try:
         update()
@@ -139,6 +140,8 @@ while True: # boucle infinie
         quit()
 
     if(rfidInst.readed and rfidInst.lastId != None): # avons-nous un badge ?
+        session["bypassAll"]= False # on débypass
+        session["bypassHome"] = False
         session["badgeInProcess"] = rfidInst.lastId # on stocke le badge dans session
         Print("[INFO] Scanned {}".format(session["badgeInProcess"]))
         rfidInst.readed = False # la lecture a ete faite
