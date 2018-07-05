@@ -8,7 +8,7 @@ Il a besoin de :
   - Un lecteur MFRC522 et sa librairie MFRC522-python
   - Une base de donnée hébergée en local (mysql)
 
-Le script tourne sous Python 3 avec une interface Tkinter.
+Le script tourne sous Python 3.5.3 avec une interface Tkinter.
 
 ### 2. Installation
 #### 2.1 Système
