@@ -9,7 +9,9 @@ import Handlers.GUI.Home as handlerGuiHome
 import Handlers.DataBase.db as databaseHandler
 import Handlers.MFRC522.handler as rfidHandler
 import Handlers.GUI.Admin.Level1 as handlerGuiAdmin1
+import Handlers.GUI.Admin.Level2 as handlerGuiAdmin2
 import Handlers.GUI.User.Level1 as handlerGuiUser1
+import Handlers.GUI.User.Level2 as handlerGuiUser2
 
 
 handlers = {} # definition des Handlers, instances des Feuilles
@@ -80,8 +82,10 @@ def update(): # update du gui
 handlers["home"] = handlerGuiHome.HomeHandler(root, ts, rfidInst)
 handlers["admin"] = {}
 handlers["admin"]["level1"] = handlerGuiAdmin1.AdminHandler(root, ts, home)
+handlers["admin"]["level2"] = handlerGuiAdmin2.AdminHandler(root, ts, home)
 handlers["user"] = {}
 handlers["user"]["level1"] = handlerGuiUser1.UserHandler(root, ts)
+handlers["user"]["level2"] = handlerGuiUser2.UserHandler(root, ts)
 handlers["home"].set() # on envoie le gui
 
 session["bypassAll"] = False # on désactive le bypass
@@ -115,6 +119,24 @@ def showRemanent(): # affichage des infos de base de l'utilisateur
 
     lhome = tk.Button(root, image=home, background="white", highlightthickness = 0, bd = 0, bg="#fff", command=gotohome)
     lhome.place(anchor="sw", x=30, y=height-18)
+
+def userHandler():
+    Print("[GUI] Starting User Gui")
+    showRemanent() # on affiche les infos de base de l'user
+    handlers["user"]["level1"].set(session)
+    while handlers["user"]["level1"].selection == 0: # rien
+        update() # why not ?
+
+    clearTk(root)
+
+    if handlers["user"]["level1"].selection == 1: # achat
+        showRemanent()
+        products = dbInst.getProducts()
+        handlers["user"]["level2"].set(session, parameters, products)
+        update()
+        while not handlers["user"]["level2"].validated:
+            update()
+        print("Validated")
 
 session["bypassHome"] = False
 
@@ -215,24 +237,20 @@ while True: # boucle infinie
                     Print("[GUI] {} was selected".format(session['adminSelection']))
                     clearTk(root) # on efface
                     if(session["adminSelection"] == 3): # si on va en user
-                        Print("[GUI] Starting User Gui")
-                        showRemanent() # on affiche les infos de base de l'user
-                        products = dbInst.getProducts()
-                        handlers["user"]["level1"].set(session, parameters, products)
-                        update()
-                        while not handlers["user"]["level1"].validated:
-                            update()
-                        print("Validated")
+                        userHandler()
+                    elif(session["adminSelection"] == 1): # admin
+                        print("[GUI] Starting Admin Gui")
+                        showRemanent()
+                        handlers["admin"]["level2"].set(session)
 
-                        
-                    elif(session["adminSelection"] == 2):
+                    elif(session["adminSelection"] == 2): #permanent
                         pass
-                    else:
-                        pass
+                    else: # jico (just in case of)
+                        userHandler()
             elif(session["grade"] == 2): # on est permanent
                 pass
             else: # on est user
-                pass
+                userHandler()
         else:
             Print("[Instance] Rebooting ...")
 
