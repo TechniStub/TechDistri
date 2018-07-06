@@ -12,5 +12,6 @@
         <query name="getProduct">SELECT l.Id, l.Row, l.Col, l.isPresent, r.Nom, r.NomC, r.Price, s.Stock, s.Min FROM products.Place l, products.Products r, products.Stock s WHERE l.Id = r.Id and l.Id = s.Id and l.row = {} and l.col = {};</query>
         <query name="getProducts">SELECT l.Id, l.Row, l.Col, l.isPresent, r.Nom, r.NomC, r.Price, s.Stock, s.Min FROM products.Place l, products.Products r, products.Stock s WHERE l.Id = r.Id and l.Id = s.Id;</query>
         <query name="updateStock">UPDATE products.Stock SET Stock = {} WHERE Id = {};</query>
+        <query name="getTransaction">SELECT * FROM users.transactions WHERE Id1 = {} ORDER BY Date DESC, Id DESC;</query>
     </queries>
 </data>

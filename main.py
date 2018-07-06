@@ -12,6 +12,7 @@ import Handlers.GUI.Admin.Level1 as handlerGuiAdmin1
 import Handlers.GUI.Admin.Level2 as handlerGuiAdmin2
 import Handlers.GUI.User.Level1 as handlerGuiUser1
 import Handlers.GUI.User.Level2 as handlerGuiUser2
+import Handlers.GUI.User.Level3 as handlerGuiUser3
 
 
 handlers = {} # definition des Handlers, instances des Feuilles
@@ -86,6 +87,7 @@ handlers["admin"]["level2"] = handlerGuiAdmin2.AdminHandler(root, ts, home)
 handlers["user"] = {}
 handlers["user"]["level1"] = handlerGuiUser1.UserHandler(root, ts)
 handlers["user"]["level2"] = handlerGuiUser2.UserHandler(root, ts)
+handlers["user"]["level3"] = handlerGuiUser3.UserHandler(root, ts)
 handlers["home"].set() # on envoie le gui
 
 session["bypassAll"] = False # on désactive le bypass
@@ -137,6 +139,25 @@ def userHandler():
         while not handlers["user"]["level2"].validated:
             update()
         print("Validated")
+    else: #Historique des transactions
+        showRemanent()
+        transacBuffer = dbInst.getQuery(queries["getTransaction"].format(session["uuid"]))
+        transac = []
+        index = -1
+        labels=[]
+
+        for(_id, _from, _to, _value, _date, _info) in transacBuffer:
+            transac.append({})
+            transac[index]["id"] = _id
+            transac[index]["from"] = _from
+            transac[index]["to"] = _to
+            transac[index]["value"] = _value
+            transac[index]["date"] = _date
+            transac[index]["info"] = _info
+
+        handlers["user"]["level3"].set(transac)
+
+
 
 session["bypassHome"] = False
 
