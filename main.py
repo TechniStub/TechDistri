@@ -58,6 +58,16 @@ resized = original.resize((47, 47), Image.ANTIALIAS)
 
 exit = ImageTk.PhotoImage(resized)
 
+original = Image.open("/home/pi/TechDistri/Resources/scrollDown.png") #idem
+resized = original.resize((28, 17), Image.ANTIALIAS)
+
+scrollDown = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/scrollUp.png") #idem
+resized = original.resize((28, 17), Image.ANTIALIAS)
+
+scrollUp = ImageTk.PhotoImage(resized)
+
 def clearTk(toClr): # definition de la fonction d' éfacage du gui
     for widget in toClr.winfo_children():
         widget.destroy()
@@ -87,7 +97,7 @@ handlers["admin"]["level2"] = handlerGuiAdmin2.AdminHandler(root, ts, home)
 handlers["user"] = {}
 handlers["user"]["level1"] = handlerGuiUser1.UserHandler(root, ts)
 handlers["user"]["level2"] = handlerGuiUser2.UserHandler(root, ts)
-handlers["user"]["level3"] = handlerGuiUser3.UserHandler(root, ts)
+handlers["user"]["level3"] = handlerGuiUser3.UserHandler(root, ts, scrollUp, scrollDown)
 handlers["home"].set() # on envoie le gui
 
 session["bypassAll"] = False # on désactive le bypass
