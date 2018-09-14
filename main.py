@@ -3,6 +3,7 @@ import tkinter as tk
 from PIL import ImageTk, Image
 import time
 import os
+import sys
 
 # Import des "Feuilles" de GUI
 import Handlers.GUI.Home as handlerGuiHome
@@ -10,9 +11,23 @@ import Handlers.DataBase.db as databaseHandler
 import Handlers.MFRC522.handler as rfidHandler
 import Handlers.GUI.Admin.Level1 as handlerGuiAdmin1
 import Handlers.GUI.Admin.Level2 as handlerGuiAdmin2
+import Handlers.GUI.Admin.Level3 as handlerGuiAdmin3
 import Handlers.GUI.User.Level1 as handlerGuiUser1
 import Handlers.GUI.User.Level2 as handlerGuiUser2
 import Handlers.GUI.User.Level3 as handlerGuiUser3
+import Handlers.GUI.Keyboard as handlerVirualKeyboard
+
+import Handlers.GUI.common as commonGUI
+
+
+##
+##               |--> Level 2 (ACHAT)
+##               |
+##  UTILISATEUR -|--> Level 4 (Ajouter Du credit)
+##  Level 1      |
+##  Selection de |--> Level 3 (HISTOrique)
+##  Histo ou
+##  achat
 
 
 handlers = {} # definition des Handlers, instances des Feuilles
@@ -39,9 +54,12 @@ rfidInst.start() # on le démarre
 Print("|-- [MFRC522] Connected")
 
 root = tk.Tk() # on démarre le gui pricipal
+commonGUIinst = commonGUI.commonGUIs()
 Print("|-- [GUI] Started")
 root.attributes('-fullscreen', True) # on lui affecte l'écran
 root.configure(background="white")
+root.config(cursor="crosshair")
+
 #ts = tk.PhotoImage(file="Resources/ts.jpg") <- Does not work
 original = Image.open("/home/pi/TechDistri/Resources/ts.jpg") # on ouvre le logo
 resized = original.resize((200, 105), Image.ANTIALIAS) # on le redimentionne
@@ -68,13 +86,32 @@ resized = original.resize((28, 17), Image.ANTIALIAS)
 
 scrollUp = ImageTk.PhotoImage(resized)
 
+original = Image.open("/home/pi/TechDistri/Resources/scrollLeft.png") #idem
+resized = original.resize((17, 28), Image.ANTIALIAS)
+
+scrollLeft = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/scrollRight.png") #idem
+resized = original.resize((17, 28), Image.ANTIALIAS)
+
+scrollRight = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/trash.png") #idem
+resized = original.resize((47, 47), Image.ANTIALIAS)
+
+trash = ImageTk.PhotoImage(resized)
+
 def clearTk(toClr): # definition de la fonction d' éfacage du gui
     for widget in toClr.winfo_children():
         widget.destroy()
 
 def quit(): # stopper le programme
     Print("[Stop]")
-    root.destroy()
+    try:
+        root.destroy()
+    except:
+        pass
+    exited=True
     Print("|-- [GUI] Killed")
     rfidInst.stop = True
     rfidInst.join()
@@ -82,18 +119,29 @@ def quit(): # stopper le programme
     dbInst.cursor.close()
     dbInst.conn.close()
     Print("|-- [DataBase] Killed")
+    sys.exit()
 
 root.bind('<Escape>',lambda e: quit())
 
 def update(): # update du gui
-    root.update()
-    root.update_idletasks()
+    try:
+        root.update()
+        pass
+    except:
+        pass
+"""
+    try:
+        root.update_idletasks()
+    except:
+        pass"""
 
 #definition des Instances des Feuilles
 handlers["home"] = handlerGuiHome.HomeHandler(root, ts, rfidInst)
+handlers["keyboard"] = handlerVirualKeyboard.VirtualKeyboard(name="Clavier")
 handlers["admin"] = {}
 handlers["admin"]["level1"] = handlerGuiAdmin1.AdminHandler(root, ts, home)
-handlers["admin"]["level2"] = handlerGuiAdmin2.AdminHandler(root, ts, home)
+handlers["admin"]["level2"] = handlerGuiAdmin2.AdminHandler(root, ts, home, rfidInst, dbInst, queries, handlers["keyboard"], trash, commonGUIinst, scrollLeft, scrollRight, session)
+handlers["admin"]["level3"] = handlerGuiAdmin3.AdminHandler(root, ts, home, rfidInst, dbInst, queries, handlers["keyboard"], trash, commonGUIinst, scrollLeft, scrollRight, session)
 handlers["user"] = {}
 handlers["user"]["level1"] = handlerGuiUser1.UserHandler(root, ts)
 handlers["user"]["level2"] = handlerGuiUser2.UserHandler(root, ts)
@@ -136,7 +184,7 @@ def userHandler():
     Print("[GUI] Starting User Gui")
     showRemanent() # on affiche les infos de base de l'user
     handlers["user"]["level1"].set(session)
-    while handlers["user"]["level1"].selection == 0: # rien
+    while handlers["user"]["level1"].selection == 0 and session["bypassAll"] == False: # rien
         update() # why not ?
 
     clearTk(root)
@@ -146,10 +194,36 @@ def userHandler():
         products = dbInst.getProducts()
         handlers["user"]["level2"].set(session, parameters, products)
         update()
-        while not handlers["user"]["level2"].validated:
+        while not handlers["user"]["level2"].canceled and session["bypassAll"] == False:
             update()
-        print("Validated")
-    else: #Historique des transactions
+
+        try:
+            handlers["user"]["level2"].cancel()
+            Print("Auto Canceled Command")
+        except:
+            pass
+
+
+        if handlers["user"]["level2"].validated and handlers["user"]["level2"].selection["qty"]!=0:
+            print("Validated")
+            selectedQty = handlers["user"]["level2"].selection["qty"]
+            totalToPay = handlers["user"]["level2"].selection["total"]
+            creditResult = handlers["user"]["level2"].selection["final"]
+            productId = handlers["user"]["level2"].ActiveProduct["id"]
+            productName= handlers["user"]["level2"].ActiveProduct["nomc"]
+            updated=False
+            try:
+                productName = productName if selectedQty == 1 else str(selectedQty)+"x "+productName
+                dbInst.edit(queries["updateStock"].format(selectedQty, productId))
+                dbInst.edit(queries["transacToServer"].format(session["uuid"], totalToPay, productName))
+                dbInst.edit(queries["updateCredits"].format(totalToPay, session["uuid"]))
+            except:
+                pass
+        else:
+            print("Canceled")
+        handlers["user"]["level2"].canceled = False
+        handlers["user"]["level2"].validated = False
+    elif handlers["user"]["level1"].selection == 2: #Historique des transactions
         showRemanent()
         transacBuffer = dbInst.getQuery(queries["getTransaction"].format(session["uuid"]))
         transac = []
@@ -170,8 +244,11 @@ def userHandler():
 
 
 session["bypassHome"] = False
+exited = False
 
 while True: # boucle infinie
+    if exited:
+        break
     if(session["bypassAll"]): # si on est bypassé, on le remet a 0 le bypass et le gui
         clearTk(root)
         handlers["admin"]["level1"].isSelected = False
@@ -189,7 +266,7 @@ while True: # boucle infinie
     try:
         update()
     except:
-        exit()
+        exited=True
         quit()
 
     if(rfidInst.readed and rfidInst.lastId != None): # avons-nous un badge ?
@@ -204,13 +281,14 @@ while True: # boucle infinie
         user = dbInst.getQuery(queries["getUserInfo"].format(session["badgeInProcess"]))
         userQty = 0
 
-        for (badgeId, uuid, nom, pnom, grade, credit) in user:
+        for (badgeId, uuid, nom, pnom, grade, credit, GradeCustom) in user:
             userQty += 1
             session["uuid"] = uuid
             session["nom"] = nom
             session["pnom"] = pnom
             session["grade"] = grade
             session["credit"] = credit
+            session["gradeCustom"] = GradeCustom
             Print("|-- [DataBase] Found : {} {}, Grade:{}, Credit:{}, UUID:{}".format(pnom, nom, grade, credit, uuid))
 
         if(userQty == 0):
@@ -235,17 +313,24 @@ while True: # boucle infinie
 
             # --------- ON TRANSFORME LE GRADE EN TEXTE LISIBLE PAR UN USER STANDARD ---------
             if(session["grade"] == 0):
-                if(session["nom"] == "LABORDE" and session["pnom"] == "Stephane"):
-                    session["gradeInText"] = ""
-                else :
-                    session["gradeInText"] = "admin"
+                session["gradeInText"] = "admin"
+                session["sAdmin"] = False
             elif(session["grade"] == 2):
                 session["gradeInText"] = "permanent"
+                session["sAdmin"] = False
+            elif(session["grade"] == (0-1)):
+                session["gradeInText"] = "super-admin"
+                session["grade"] = 0
+                session["sAdmin"] = True
             else:
                 session["grade"] = 1
                 session["gradeInText"] = "user"
-            # --------- FIN ---------
+                session["sAdmin"] = False
 
+            if session["gradeCustom"] != "-1":
+                session["gradeInText"] = session["gradeCustom"]
+
+            # --------- FIN ---------
             Print("[Instance] Grade found : {}".format(session["gradeInText"]))
             clearTk(root) # on clean
             Print("[GUI] Cleaned")
@@ -268,12 +353,29 @@ while True: # boucle infinie
                     Print("[GUI] {} was selected".format(session['adminSelection']))
                     clearTk(root) # on efface
                     if(session["adminSelection"] == 3): # si on va en user
-                        userHandler()
+                        userHandler() # on envoie user
                     elif(session["adminSelection"] == 1): # admin
                         print("[GUI] Starting Admin Gui")
                         showRemanent()
-                        handlers["admin"]["level2"].set(session)
-
+                        handlers["admin"]["level2"].set(session) # on affiche l'admin, le vrai
+                        actualSession = handlers["admin"]["level2"]
+                        actualSessionId = 2
+                        while session["bypassAll"] == False:
+                            while not(actualSession.finished) and not(actualSession.pageChanging) and session["bypassAll"] == False:
+                                update()
+                            if actualSession.pageChanging:
+                                if actualSessionId == 2:
+                                    actualSession = handlers["admin"]["level3"]
+                                    actualSessionId = 3
+                                else:
+                                    actualSession = handlers["admin"]["level2"]
+                                    actualSessionId = 2
+                                handlers["admin"]["level2"].pageChanging = False
+                                handlers["admin"]["level3"].pageChanging = False
+                                clearTk(root)
+                                showRemanent()
+                                actualSession.set(session)
+                                update()
                     elif(session["adminSelection"] == 2): #permanent
                         pass
                     else: # jico (just in case of)

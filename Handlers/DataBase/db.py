@@ -28,9 +28,16 @@ class DataBaseHandler():
         self.cursor = self.conn.cursor(buffered=True)
 
     def getQuery(self, query):
+        self.cursor.close()
+        self.cursor = self.conn.cursor(buffered=True)
         self.cursor.execute(query)
-
         return self.cursor
+
+    def edit(self, query):
+        self.cursor.close()
+        self.cursor = self.conn.cursor(buffered=True)
+        self.cursor.execute(query)
+        self.conn.commit()
 
     def getAvailableQueries(self):
         self.queries = {}

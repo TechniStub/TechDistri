@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <paypal id="1">
+        <parameter type="mode">sandbox</parameter>
+        <parameter type="clienid">MDP2stub!</parameter>
+        <parameter type="clientsecret">127.0.0.1</parameter>
+    </paypal>

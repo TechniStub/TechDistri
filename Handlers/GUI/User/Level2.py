@@ -11,8 +11,12 @@ class UserHandler():
         self.selection["total"] = 0
         self.selection["final"] = 0
         self.validated = False
+        self.canceled = False
+        self.isAnAppRunning=False
 
     def cancel(self):
+        self.canceled = True
+        self.isAnAppRunning=False
         self.poproot.destroy()
 
     def validate(self):
@@ -42,6 +46,8 @@ class UserHandler():
             self.poproot.update()
 
     def touchHandler(self, text):
+        if self.isAnAppRunning:
+            self.cancel()
         self.x=0
         print("Touched {}{}".format(text[0], text[1]))
         self.ActiveProduct = {}
@@ -55,6 +61,7 @@ class UserHandler():
         if(self.ActiveProduct["id"] != -1):
             self.selection["product"] = self.ActiveProduct
             self.poproot = tk.Tk()
+            self.isAnAppRunning = True
             ws = self.poproot.winfo_screenwidth() # width of the screen
             hs = self.poproot.winfo_screenheight() # height of the scre
             self.poproot.configure(background="white")
@@ -101,14 +108,14 @@ class UserHandler():
                 self.qtyButtons.append(tk.Button(self.poproot, state=state, text=posB+1, font=("Arial", 14), background="#fff", highlightthickness = 0, bd = 0, bg="#fff", command=lambda pos=posB:self.changeQty(pos)))
                 self.qtyButtons[index].place(anchor="center", x=xpos, y=150)
 
-            self.changeQty(0) # set qty to 1
-
+            self.changeQty(-1) # set qty to 0
             self.poproot.update()
 
     def set(self, session, distriParam, products):
         self.products = products
         self.session = session
         self.distriParam = distriParam
+        self.selection={}
         self.height = self.root.winfo_screenheight()
         self.width = self.root.winfo_screenwidth()
         self.lachat = tk.Label(self.root, text="Achat", font=("Arial", 18), anchor='center', background="white")

@@ -22,7 +22,7 @@ class UserHandler():
         self.shownTransac = self.transac[self.page:self.page+10]
         for index in range(10):
             self.labels[index][0]["text"] = self.shownTransac[index]["info"]
-            self.labels[index][1]["text"] = self.shownTransac[index]["date"]
+            self.labels[index][1]["text"] = str(self.shownTransac[index]["date"])[:10]
             self.labels[index][2]["text"] = self.shownTransac[index]["value"]
 
         self.lPage["text"] = "Page : {}-{}/{}".format(self.page, self.page+10, len(self.transac))
@@ -54,7 +54,7 @@ class UserHandler():
                 for indexY in range(3):
                     self.labels[index].append(tk.Label(self.root, font=("arial", 14), bg="#fff"))
                 self.labels[index][0].place(anchor="nw", x=30, y=(index*40)+200) ; self.labels[index][0]["text"] = self.shownTransac[index]["info"]
-                self.labels[index][1].place(anchor="nw", x=200, y=(index*40)+200); self.labels[index][1]["text"] = self.shownTransac[index]["date"]
+                self.labels[index][1].place(anchor="nw", x=200, y=(index*40)+200); self.labels[index][1]["text"] = str(self.shownTransac[index]["date"])[:10]
                 self.labels[index][2].place(anchor="nw", x=350, y=(index*40)+200); self.labels[index][2]["text"] = self.shownTransac[index]["value"]
             for index in range(len(self.transac)):
                 self.total += float(self.transac[index]["value"])
@@ -70,7 +70,7 @@ class UserHandler():
                 for indexY in range(3):
                     self.labels[index].append(tk.Label(self.root, font=("arial", 14), bg="#fff"))
                 self.labels[index][0].place(anchor="nw", x=30, y=(index*40)+200) ; self.labels[index][0]["text"] = self.shownTransac[index]["info"]
-                self.labels[index][1].place(anchor="nw", x=200, y=(index*40)+200); self.labels[index][1]["text"] = self.shownTransac[index]["date"]
+                self.labels[index][1].place(anchor="nw", x=200, y=(index*40)+200); self.labels[index][1]["text"] = str(self.shownTransac[index]["date"])[:10]
                 self.labels[index][2].place(anchor="nw", x=350, y=(index*40)+200); self.labels[index][2]["text"] = self.shownTransac[index]["value"]
                 self.total += float(self.transac[index]["value"])
 
