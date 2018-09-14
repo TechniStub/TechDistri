@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <database id="1">
-        <parameter type="username">localQuery</parameter>
-        <parameter type="password">MDP2stub!</parameter>
+        <parameter type="username">USERNAME</parameter>
+        <parameter type="password">PASSWORD!</parameter>
         <parameter type="ip">127.0.0.1</parameter>
     </database>
     <queries>
