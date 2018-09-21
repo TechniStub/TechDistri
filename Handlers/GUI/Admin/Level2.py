@@ -1,7 +1,7 @@
 import tkinter as tk
 
 class AdminHandler():
-    def __init__(self, root, image, home, rfid, database, queries, keyboard, image1, commonFunc, scrollLeft, scrollRight, session):
+    def __init__(self, root, image, home, rfid, database, queries, keyboard, image1, commonFunc, scrollLeft, scrollRight, session, userEdit, userPlus, userMoins, stockVoir, stockModify, produitsModify, produitsSee, produitsAddDel):
         self.root = root
         self.rfid = rfid
         self.finished = False
@@ -15,6 +15,14 @@ class AdminHandler():
         self.scrollRight = scrollRight
         self.session = session
         self.pageChanging = False
+        self.userEdit = userEdit
+        self.userPlus = userPlus
+        self.userMoins = userMoins
+        self.stockVoir = stockVoir
+        self.stockModify = stockModify
+        self.productsModify = produitsModify
+        self.productsSee = produitsSee
+        self.productsAddDel = produitsAddDel
 
     def changeEdit(self, val):
         self.edit = val
@@ -267,41 +275,65 @@ class AdminHandler():
         self.height = self.root.winfo_screenheight()
         self.width = self.root.winfo_screenwidth()
 
-        # Badges menu
-        self.lBadges = tk.Label(self.root, text="Badges", font=("arial", 16), bg="#fff")
-        self.lBadges.place(anchor="nw", x=50, y=self.height/4)
+        generalDecalage = -45
 
-        self.newBadgeButton = tk.Button(self.root, command=lambda: self.choiceHandler(1, 1), text="Nouveau", height=1, width=6, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
-        self.newBadgeButton.place(anchor="center", y=self.height/4+45, x=125)
+        self.dashboardL = tk.Label(self.root, text="Dashboard", font=("arial", 24), fg="#ff3500", bg="#fff")
+        self.dashboardL.place(anchor="center", x=self.width/2, y=self.height/4-45)
 
-        self.delBadgeButton = tk.Button(self.root, command=lambda: self.choiceHandler(1, 2), text="Supprimer", height=1, width=8, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
-        self.delBadgeButton.place(anchor="center", y=self.height/4+45, x=255)
+        ###      Badges menu     ###
+        self.lBadges = tk.Label(self.root, text="Badges"+(50*" "), font=("arial", 16), bg="#00b3f1", fg="#fff", padx=10, pady=5)
+        self.lBadges.place(anchor="nw", x=25, y=self.height/4+45+generalDecalage)
 
-        self.delBadgeButton = tk.Button(self.root, command=lambda: self.choiceHandler(1, 3), text="Grader", height=1, width=8, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
-        self.delBadgeButton.place(anchor="center", y=self.height/4+45, x=385)
+        #self.newBadgeButton = tk.Button(self.root, command=lambda: self.choiceHandler(1, 1), image=self.userEdit, height=1, width=6, bd=0, highlightthickness = 0, activebackground="#000")
+        self.newBadgeButton = tk.Button(self.root, image=self.userPlus, highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.choiceHandler(1, 1))
+        self.newBadgeButton.place(anchor="center", y=315+generalDecalage, x=75)
+        self.newBadgeLabel = tk.Label(self.root, text="Nouveau", font=("arial", 16), bg="#fff")
+        self.newBadgeLabel.place(anchor="center", y=353+generalDecalage, x=75)
 
-        # Stock menu
-        self.lStock = tk.Label(self.root, text="Stock", font=("arial", 16), bg="#fff")
-        self.lStock.place(anchor="nw", x=50, y=self.height/4+75)
+        #self.delBadgeButton = tk.Button(self.root, command=lambda: self.choiceHandler(1, 2), text="Supprimer", height=1, width=8, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
+        self.delBadgeButton = tk.Button(self.root, image=self.userMoins, highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.choiceHandler(1, 2))
+        self.delBadgeButton.place(anchor="center", y=315+generalDecalage, x=225)
+        self.delBadgeLabel = tk.Label(self.root, text="Supprimer", font=("arial", 16), bg="#fff")
+        self.delBadgeLabel.place(anchor="center", y=353+generalDecalage, x=225)
 
-        self.seeStockButton = tk.Button(self.root, command=lambda: self.choiceHandler(3, 1), text="Voir", height=1, width=6, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
-        self.seeStockButton.place(anchor="center", y=self.height/4+45+75, x=125)
+        #self.delBadgeButton = tk.Button(self.root, command=lambda: self.choiceHandler(1, 3), text="Grader", height=1, width=8, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
+        self.editBadgeButton = tk.Button(self.root, image=self.userEdit, highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.choiceHandler(1, 3))
+        self.editBadgeButton.place(anchor="center", y=315+generalDecalage, x=380)
+        self.editBadgeLabel = tk.Label(self.root, text="Modifier", font=("arial", 16), bg="#fff")
+        self.editBadgeLabel.place(anchor="center", y=353+generalDecalage, x=380)
 
-        self.editStockButton = tk.Button(self.root, command=lambda: self.choiceHandler(3, 2), text="Modifier", height=1, width=8, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
-        self.editStockButton.place(anchor="center", y=self.height/4+45+75, x=255)
+        ###     Stock menu     ###
+        self.lStock = tk.Label(self.root, text="Stock"+(53*" "), font=("arial", 16), bg="#00b3f1", fg="#fff", padx=10, pady=5)
+        self.lStock.place(anchor="nw", x=25, y=406+generalDecalage)
 
-        # Product menu
-        self.lProduct = tk.Label(self.root, text="Produits", font=("arial", 16), bg="#fff")
-        self.lProduct.place(anchor="nw", x=50, y=self.height/4+150)
+        self.seeStockButton = tk.Button(self.root, image=self.stockVoir, highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.choiceHandler(3, 1))
+        self.seeStockButton.place(anchor="center", y=485+generalDecalage, x=75)
+        self.delBadgeLabel = tk.Label(self.root, text="Voir", font=("arial", 16), bg="#fff", fg="#000")
+        self.delBadgeLabel.place(anchor="center", y=520+generalDecalage, x=75)
 
-        self.newBadgeButton = tk.Button(self.root, command=lambda: self.choiceHandler(4, 1), text="Voir", height=1, width=6, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
-        self.newBadgeButton.place(anchor="center", y=self.height/4+45+150, x=125)
+        self.editStockButton = tk.Button(self.root, image=self.stockModify, highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.choiceHandler(3, 2))
+        self.editStockButton.place(anchor="center", y=485+generalDecalage, x=225)
+        self.delBadgeLabel = tk.Label(self.root, text="Modifier", font=("arial", 16), bg="#fff", fg="#000")
+        self.delBadgeLabel.place(anchor="center", y=520+generalDecalage, x=225)
 
-        self.delBadgeButton = tk.Button(self.root, command=lambda: self.choiceHandler(4, 2), text="Modifier", height=1, width=8, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
-        self.delBadgeButton.place(anchor="center", y=self.height/4+45+150, x=255)
+        ###      Product menu     ###
+        self.lProduct = tk.Label(self.root, text="Products"+(48*" "), font=("arial", 16), bg="#00b3f1", fg="#fff", padx=10, pady=5)
+        self.lProduct.place(anchor="nw", x=25, y=570+generalDecalage)
 
-        self.delBadgeButton = tk.Button(self.root, command=lambda: self.choiceHandler(4, 3), text="Ajouter/Supprimer", height=1, width=16, font=("Arial", 14), bd=0, highlightthickness = 0, bg="#fd3303", activebackground="#000", fg="#fff", activeforeground="#fff", pady=2)
-        self.delBadgeButton.place(anchor="center", y=self.height/4+45+200, x=190)
+        self.seeProductsButton = tk.Button(self.root, image=self.productsSee, highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.choiceHandler(4, 1))
+        self.seeProductsButton.place(anchor="center", y=645+generalDecalage, x=75)
+        self.delBadgeLabel = tk.Label(self.root, text="Voir", font=("arial", 16), bg="#fff", fg="#000")
+        self.delBadgeLabel.place(anchor="center", y=680+generalDecalage, x=75)
+
+        self.modifyProductsButton = tk.Button(self.root, image=self.productsModify, highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.choiceHandler(4, 2))
+        self.modifyProductsButton.place(anchor="center", y=645+generalDecalage, x=225)
+        self.delBadgeLabel = tk.Label(self.root, text="Modifier", font=("arial", 16), bg="#fff", fg="#000")
+        self.delBadgeLabel.place(anchor="center", y=680+generalDecalage, x=225)
+
+        self.adddelProductsButton = tk.Button(self.root, image=self.productsAddDel, highlightthickness = 0, bd = 0, bg="#fff", command=lambda: self.choiceHandler(4, 3))
+        self.adddelProductsButton.place(anchor="center", y=645+generalDecalage, x=380)
+        self.delBadgeLabel = tk.Label(self.root, text="Ajout / Suppr", font=("arial", 16), bg="#fff", fg="#000")
+        self.delBadgeLabel.place(anchor="center", y=680+generalDecalage, x=380)
 
         # Change Admin Page
         if(self.session["sAdmin"]):

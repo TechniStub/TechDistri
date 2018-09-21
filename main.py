@@ -100,6 +100,46 @@ original = Image.open("/home/pi/TechDistri/Resources/trash.png") #idem
 resized = original.resize((47, 47), Image.ANTIALIAS)
 
 trash = ImageTk.PhotoImage(resized)
+### ADMIN LOGOS ###
+original = Image.open("/home/pi/TechDistri/Resources/userEdit.png") #idem
+resized = original.resize((55, 44), Image.ANTIALIAS)
+
+userEdit = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/userPlus.png") #idem
+resized = original.resize((55, 44), Image.ANTIALIAS)
+
+userPlus = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/userMoins.png") #idem
+resized = original.resize((55, 44), Image.ANTIALIAS)
+
+userMoins = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/stockVoir.png") #idem
+resized = original.resize((55, 44), Image.ANTIALIAS)
+
+stockVoir = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/stockModify.png") #idem
+resized = original.resize((55, 44), Image.ANTIALIAS)
+
+stockModify = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/produitsSee.png") #idem
+resized = original.resize((55, 44), Image.ANTIALIAS)
+
+produitsSee = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/produitsModify.png") #idem
+resized = original.resize((55, 44), Image.ANTIALIAS)
+
+produitsModify = ImageTk.PhotoImage(resized)
+
+original = Image.open("/home/pi/TechDistri/Resources/produitsAddDel.png") #idem
+resized = original.resize((55, 44), Image.ANTIALIAS)
+
+produitsAddDel = ImageTk.PhotoImage(resized)
 
 def clearTk(toClr): # definition de la fonction d' éfacage du gui
     for widget in toClr.winfo_children():
@@ -140,7 +180,7 @@ handlers["home"] = handlerGuiHome.HomeHandler(root, ts, rfidInst)
 handlers["keyboard"] = handlerVirualKeyboard.VirtualKeyboard(name="Clavier")
 handlers["admin"] = {}
 handlers["admin"]["level1"] = handlerGuiAdmin1.AdminHandler(root, ts, home)
-handlers["admin"]["level2"] = handlerGuiAdmin2.AdminHandler(root, ts, home, rfidInst, dbInst, queries, handlers["keyboard"], trash, commonGUIinst, scrollLeft, scrollRight, session)
+handlers["admin"]["level2"] = handlerGuiAdmin2.AdminHandler(root, ts, home, rfidInst, dbInst, queries, handlers["keyboard"], trash, commonGUIinst, scrollLeft, scrollRight, session, userEdit, userPlus, userMoins, stockVoir, stockModify, produitsModify, produitsSee, produitsAddDel)
 handlers["admin"]["level3"] = handlerGuiAdmin3.AdminHandler(root, ts, home, rfidInst, dbInst, queries, handlers["keyboard"], trash, commonGUIinst, scrollLeft, scrollRight, session)
 handlers["user"] = {}
 handlers["user"]["level1"] = handlerGuiUser1.UserHandler(root, ts)
