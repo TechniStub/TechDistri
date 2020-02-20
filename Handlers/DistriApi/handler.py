@@ -22,11 +22,11 @@ class DistriHandler():
         else:
             for cell in range(len(data)):
                 gpio.output(self.data, gpio.LOW if data[cell]==0 else gpio.HIGH)
-                time.sleep(self.period/10)
+                time.sleep(self.period/4)
                 gpio.output(self.clock, gpio.HIGH)
                 time.sleep(self.period)
                 gpio.output(self.data, gpio.LOW)
-                time.sleep(self.period/10)
+                time.sleep(self.period/4)
                 gpio.output(self.clock, gpio.LOW)
                 time.sleep(self.period)
 
@@ -36,6 +36,6 @@ class DistriHandler():
 
 if __name__ == "__main__":
     ist = DistriHandler(5, 12, 6, freq=0.125)
-    while True:
-        ist.writeOnShiftReg([1, 0, 1, 0, 0, 1, 1, 1])
-        time.sleep(0.5)
+    ist.writeOnShiftReg([1, 0, 1, 0, 0, 1, 1, 1])
+    time.sleep(0.5)
+    ist.writeOnShiftReg([1, 1, 1, 1, 1, 1, 1, 1])

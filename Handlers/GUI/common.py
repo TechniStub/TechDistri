@@ -1,12 +1,15 @@
 import tkinter as tk
 
 class commonGUIs():
-    def __init__(self):
+    def __init__(self, root):
+        self.root = root
         self.validated = False
         self.canceled = False
 
     def info(self, text, sizex=250, sizey=90, line=1):
-        self.inforoot = tk.Tk()
+        self.inforoot = tk.Toplevel(self.root)
+        self.inforoot.transient(self.root)
+        self.inforoot.grab_set()
         self.inforoot.configure(background="white")
         self.inforoot.geometry("{}x{}".format(sizex, sizey))
         self.inforoot.config(cursor="crosshair")
@@ -30,7 +33,9 @@ class commonGUIs():
         self.sure=val
 
     def areSure(self, text):
-        self.sureroot = tk.Tk()
+        self.sureroot = tk.Toplevel(self.root)
+        self.sureroot.transient(self.root)
+        self.sureroot.grab_set()
         self.sure = 0
         self.sureroot.configure(background="white")
         self.sureroot.geometry("{}x{}".format(200, 90))
@@ -51,7 +56,9 @@ class commonGUIs():
 
 
     def newPopup(self, name, sizex=450, sizey=250):
-        self.poproot = tk.Tk()
+        self.poproot = tk.Toplevel(self.root)
+        self.poproot.transient(self.root)
+        self.poproot.grab_set()
         self.ws = self.poproot.winfo_screenwidth() # width of the screen
         self.hs = self.poproot.winfo_screenheight() # height of the scre
         self.poproot.configure(background="white")

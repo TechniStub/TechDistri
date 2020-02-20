@@ -1,3 +1,7 @@
+#
+#    USER - LEVEL2
+#
+
 import tkinter as tk
 import time
 
@@ -49,7 +53,7 @@ class UserHandler():
         if self.isAnAppRunning:
             self.cancel()
         self.x=0
-        print("Touched {}{}".format(text[0], text[1]))
+        # print("Touched {}{}".format(text[0], text[1]))
         self.ActiveProduct = {}
         # break time !
         for product in self.products:
@@ -118,7 +122,7 @@ class UserHandler():
         self.selection={}
         self.height = self.root.winfo_screenheight()
         self.width = self.root.winfo_screenwidth()
-        self.lachat = tk.Label(self.root, text="Achat", font=("Arial", 18), anchor='center', background="white")
+        self.lachat = tk.Label(self.root, text="Achat", font=("arial", 24), fg="#ff3500", bg="#fff", anchor='center')
         self.lachat.place(anchor="center", x=int(self.width/2), y=150)
 
         self.selection = {}
@@ -132,13 +136,14 @@ class UserHandler():
 
         self.fuzed = []
         index = -1
-        for group in distriParam["fusioned"]["value"].split(","):
+        for group in distriParam["fusioned"]["value"].split(";"):
             index += 1
             self.fuzed.append([])
-            for childs in group.split(";"):
+            for childs in group.split(","):
                 self.fuzed[index].append(childs)
 
         self.buttons = []
+        # print(self.fuzed)
 
         _passing = 0 # vieux passing
         xChanging = 0 # nbr de changement
@@ -155,25 +160,26 @@ class UserHandler():
                     idx += 1 # inc. de l'index
                     if str(str(y)+str(x)) in group: # la position est dans la matrice
                         passing = idx # c'est l'index
+                    # print(str(str(y)+str(x)))
 
                 if passing == 0: # affichage ?
                     ## ---------------- AFFICHAGE D'UN BOUTTON ----------------
                     pos = (y,x)
-                    self.buttons[_x].append(tk.Button(self.root, text="{}{}".format(y, x), font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=lambda p=pos: self.touchHandler(p)))
-                    self.buttons[_x][_y].place(x=50+(_x*(((self.width-70)/self.sizex))), y=200+(_y*(((self.width-50)/self.sizey))))
+                    self.buttons[_x].append(tk.Button(self.root, text="{}{}".format(y, x), font=("Arial", 18), bd=0, highlightbackground="#fd3303", highlightcolor="#fd3303", highlightthickness=1, bg="#fff", activebackground="#000", fg="#000", activeforeground="#ffffff", pady=8, padx=12, command=lambda p=pos: self.touchHandler(p)))
+                    self.buttons[_x][_y].place(x=42.5+(_x*(((self.width-70)/self.sizex))), y=240+(_y*(((self.width-175)/self.sizey))))
                 else:
                     ## ---------------- AFFICHAGE D'UN BOUTTON SUR x ----------------
                     size = len(self.fuzed[passing-1])
                     if(passing != _passing):
                         _passing = passing
                         xChanging += 1
-                        add = int((size/4.0) * (((self.width-70)/self.sizex)))
+                        add = int((size/4.0) * (((self.width-460)/self.sizex)))
 
-                        posx = 50+(_x*(((self.width-70)/self.sizex)))
-                        posy = 200+(_y*(((self.width-50)/self.sizey)))
+                        posx = 42.5+(_x*(((self.width-70)/self.sizex)))
+                        posy = 240+(_y*(((self.width-175)/self.sizey)))
 
                         pos = (y,x)
-                        self.buttons[_x].append(tk.Button(self.root, text="{}{}".format(y, xChanging), font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff", command=lambda p=pos: self.touchHandler(p)))
+                        self.buttons[_x].append(tk.Button(self.root, text="{}{}".format(y, xChanging), font=("Arial", 18), bd=0, highlightbackground="#fd3303", highlightcolor="#fd3303", highlightthickness=1, bg="#fff", activebackground="#000", fg="#000", activeforeground="#ffffff", pady=8, padx=45, command=lambda p=pos: self.touchHandler(p)))
                         self.buttons[_x][_y].place(x=posx+add, y=posy)
                     else:
                         self.buttons[_x].append(None)

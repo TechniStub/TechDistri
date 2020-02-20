@@ -17,6 +17,17 @@ class RFIDHandler(Thread):
             self.lastId = self.id
             self.readed = True
 
+    def configure(self, root, keys=[["<space>", 550785624180], ["<u>", 218041433475], ["<g>", 982884817060]]):
+        # print("Init : {}".format(keys))
+        for [key, id] in keys:
+            # print("Key : {} - Id : {}".format(key, id))
+            root.bind(key, lambda e, i=id: self.bypass(e, i))
+
+    def bypass(self, event, id):
+        print("Bypassing {}".format(id))
+        self.lastId = id
+        self.readed = True
+
 if __name__ == "__main__":
     t1 = RFIDHandler()
 

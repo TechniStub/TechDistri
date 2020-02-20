@@ -12,7 +12,7 @@
         <query name="getProduct">SELECT l.Id, l.Row, l.Col, l.isPresent, r.Nom, r.NomC, r.Price, s.Stock, s.Min FROM products.Place l, products.Products r, products.Stock s WHERE l.Id = r.Id and l.Id = s.Id and l.row = {} and l.col = {};</query>
         <query name="getProducts">SELECT l.Id, l.Row, l.Col, l.isPresent, r.Nom, r.NomC, r.Price, s.Stock, s.Min FROM products.Place l, products.Products r, products.Stock s WHERE l.Id = r.Id and l.Id = s.Id;</query>
         <query name="updateStock">UPDATE products.Stock SET Stock = {} WHERE Id = {};</query>
-        <query name="getTransaction">SELECT * FROM users.transactions WHERE Id1 = {} ORDER BY Date DESC, Id DESC;</query>
+        <query name="getTransaction">SELECT * FROM users.transactions WHERE Id1 = {} or Id2 = {} ORDER BY Date DESC, Id DESC;</query>
         <query name="badgeToUuid">SELECT * FROM users.Badges WHERE Data = "{}";</query>
         <query name="createUser">INSERT INTO users.Users (Nom, PNom) VALUES ("{}", "{}");</query>
         <query name="associateBadge">INSERT INTO users.Badges (Id, Data) SELECT Id, "{}" FROM users.Users WHERE Nom="{}" and PNom="{}";</query>
@@ -24,7 +24,10 @@
         <query name="deleteUserPart4">DELETE FROM users.Users WHERE Id={}</query>
         <query name="updateStock">UPDATE products.Stock s SET s.Stock = s.Stock-{} WHERE Id={};</query>
         <query name="transacToServer">INSERT INTO users.transactions (Id1, Id2, Value, Info) VALUES ({}, -1, {}, "{}");</query>
-        <query name="updateCredits">UPDATE users.Credits SET Value = Value-{} WHERE Id={}</query>
+        <query name="transacFromServer">INSERT INTO users.transactions (Id1, Id2, Value, Info) VALUES (-1, {}, {}, "{}");</query>
+        <!-- <query name="updateCredits">UPDATE users.Credits SET Value = Value-{} WHERE Id={}</query> -->
+        <query name="updateCredits">UPDATE users.Credits SET Value = Value WHERE Id={}</query> <!-- do nothing -->
+        <query name="addCredits">UPDATE users.Credits SET Value = Value+{} WHERE Id={}</query>
         <query name="updateGrade">UPDATE users.Users SET Grade={} WHERE  Id={};</query>
     </queries>
 </data>

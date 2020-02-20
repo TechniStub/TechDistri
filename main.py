@@ -1,3 +1,7 @@
+#
+#    MAIN
+#
+
 # Import des librairies
 import tkinter as tk
 from PIL import ImageTk, Image
@@ -15,10 +19,13 @@ import Handlers.GUI.Admin.Level3 as handlerGuiAdmin3
 import Handlers.GUI.User.Level1 as handlerGuiUser1
 import Handlers.GUI.User.Level2 as handlerGuiUser2
 import Handlers.GUI.User.Level3 as handlerGuiUser3
+import Handlers.GUI.User.Level4 as handlerGuiUser4
 import Handlers.GUI.Keyboard as handlerVirualKeyboard
 
 import Handlers.GUI.common as commonGUI
 
+
+from Handlers.Supervisor.supervisor import supervisor
 
 ##
 ##               |--> Level 2 (ACHAT)
@@ -35,6 +42,9 @@ session = {} # definition de l'équivalent de $_SESSION
 
 def Print(data): # redéfinition de print pour qu' il aille dans un fichier de log
     print("{} {}".format(time.strftime("%d %b %y, %H:%M:%S", time.localtime()), data))
+    f = open(str(time.strftime("/home/pi/TechDistri/Log/%d-%b-%y.log", time.localtime())), "a")
+    f.write("{} {}\n".format(time.strftime("%d %b %y, %H:%M:%S", time.localtime()), data))
+    f.close()
 
 Print("[Start]") # On informe que ça démare
 
@@ -54,8 +64,9 @@ rfidInst.start() # on le démarre
 Print("|-- [MFRC522] Connected")
 
 root = tk.Tk() # on démarre le gui pricipal
-commonGUIinst = commonGUI.commonGUIs()
+commonGUIinst = commonGUI.commonGUIs(root)
 Print("|-- [GUI] Started")
+rfidInst.configure(root) # for bypassing
 root.attributes('-fullscreen', True) # on lui affecte l'écran
 root.configure(background="white")
 root.config(cursor="crosshair")
@@ -159,6 +170,7 @@ def quit(): # stopper le programme
     dbInst.cursor.close()
     dbInst.conn.close()
     Print("|-- [DataBase] Killed")
+    Print("[Stop]")
     sys.exit()
 
 root.bind('<Escape>',lambda e: quit())
@@ -175,6 +187,9 @@ def update(): # update du gui
     except:
         pass"""
 
+handlers["supervisor"] = supervisor() # Seuls les classes et les librairies sont transmises en pointeur
+handlers["supervisor"].init()
+
 #definition des Instances des Feuilles
 handlers["home"] = handlerGuiHome.HomeHandler(root, ts, rfidInst)
 handlers["keyboard"] = handlerVirualKeyboard.VirtualKeyboard(name="Clavier")
@@ -186,17 +201,21 @@ handlers["user"] = {}
 handlers["user"]["level1"] = handlerGuiUser1.UserHandler(root, ts)
 handlers["user"]["level2"] = handlerGuiUser2.UserHandler(root, ts)
 handlers["user"]["level3"] = handlerGuiUser3.UserHandler(root, ts, scrollUp, scrollDown)
+handlers["user"]["level4"] = handlerGuiUser4.UserHandler(root, rfidInst, dbInst, queries, commonGUIinst, handlers["supervisor"])
 handlers["home"].set() # on envoie le gui
 
 session["bypassAll"] = False # on désactive le bypass
+session["supervisor"] = handlers["supervisor"]
+handlers["supervisor"].bypass = False
 
 def deco(): # activation du bypass
     session["bypassAll"]= True
+    handlers["supervisor"].bypass = True
     print("Deconnexion !")
 
 def gotohome(): # activation du bypass
     session["bypassHome"]= True
-    session["bypassAll"]= True
+    session["bypassAll"] = True
     print("Going to home")
 
 def showRemanent(): # affichage des infos de base de l'utilisateur
@@ -229,6 +248,8 @@ def userHandler():
 
     clearTk(root)
 
+    Print("[USER] Selection was {}".format(handlers["user"]["level1"].selection))
+
     if handlers["user"]["level1"].selection == 1: # achat
         showRemanent()
         products = dbInst.getProducts()
@@ -255,7 +276,7 @@ def userHandler():
             try:
                 productName = productName if selectedQty == 1 else str(selectedQty)+"x "+productName
                 dbInst.edit(queries["updateStock"].format(selectedQty, productId))
-                dbInst.edit(queries["transacToServer"].format(session["uuid"], totalToPay, productName))
+                dbInst.edit(queries["transacToServer"].format(session["uuid"], "-"+str(totalToPay), productName))
                 dbInst.edit(queries["updateCredits"].format(totalToPay, session["uuid"]))
             except:
                 pass
@@ -265,12 +286,12 @@ def userHandler():
         handlers["user"]["level2"].validated = False
     elif handlers["user"]["level1"].selection == 2: #Historique des transactions
         showRemanent()
-        transacBuffer = dbInst.getQuery(queries["getTransaction"].format(session["uuid"]))
+        transacBuffer = dbInst.getQuery(queries["getTransaction"].format(session["uuid"], session["uuid"]))
         transac = []
         index = -1
         labels=[]
 
-        for(_id, _from, _to, _value, _date, _info) in transacBuffer:
+        for (_id, _from, _to, _value, _date, _info) in transacBuffer:
             transac.append({})
             transac[index]["id"] = _id
             transac[index]["from"] = _from
@@ -279,9 +300,20 @@ def userHandler():
             transac[index]["date"] = _date
             transac[index]["info"] = _info
 
+        # print(transacBuffer.rowCount)
+
         handlers["user"]["level3"].set(transac)
+    elif handlers["user"]["level1"].selection == 3:
+        showRemanent()
 
+        handlers["user"]["level4"].set(session)
 
+        while (not handlers["user"]["level4"].finished) and (not session["bypassAll"]):
+            update()
+
+        Print("Finished Adding credit, état de finished : {}".format(handlers["user"]["level4"].finished))
+        clearTk(root)
+        userHandler()
 
 session["bypassHome"] = False
 exited = False
@@ -309,7 +341,7 @@ while True: # boucle infinie
         exited=True
         quit()
 
-    if(rfidInst.readed and rfidInst.lastId != None): # avons-nous un badge ?
+    if(rfidInst.readed and rfidInst.lastId != None and session["supervisor"].data["isWaiting"] == False): # avons-nous un badge ?
         session["bypassAll"]= False # on débypass
         session["bypassHome"] = False
         session["badgeInProcess"] = rfidInst.lastId # on stocke le badge dans session
@@ -421,7 +453,7 @@ while True: # boucle infinie
                     else: # jico (just in case of)
                         userHandler()
             elif(session["grade"] == 2): # on est permanent
-                pass
+                showRemanent()
             else: # on est user
                 userHandler()
         else:

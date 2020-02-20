@@ -125,18 +125,22 @@ class AdminHandler():
                     if(self.commonInst.validated):
                         user = self.db.getQuery(self.queries["getUserFromName"].format(self.nom, self.pnom))
                         nUser = 0
-                        for (_Id, _Data) in user:
-                            id = _Id
-                            nUser += 1
+                        if user is None or user == []:
+                            pass
+                        else:
+                            for (_Id) in user:
+                                id = _Id
+                                nUser += 1
+
 
                         if(nUser == 0):
                             success = False
-                            try:
+                            if True:
                                 self.db.edit(self.queries["createUser"].format(self.nom, self.pnom))
                                 self.db.edit(self.queries["createUserPart2"].format(self.nom, self.pnom))
                                 self.db.edit(self.queries["associateBadge"].format(str(newId), self.nom, self.pnom))
                                 success = True
-                            except:
+                            else:
                                 success = False
 
                             if(success):

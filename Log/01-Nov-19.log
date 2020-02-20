@@ -1,0 +1,909 @@
+01 Nov 19, 17:33:56 [Start]
+01 Nov 19, 17:33:56 |-- [DataBase] Connected
+01 Nov 19, 17:33:56 |-- [MFRC522] Connected
+01 Nov 19, 17:33:56 |-- [GUI] Started
+01 Nov 19, 17:34:01 [INFO] Scanned <tkinter.Event object at 0x75052b30>
+01 Nov 19, 17:34:01 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052b30>
+01 Nov 19, 17:34:01 [Error] User with badge <tkinter.Event object at 0x75052b30> was not found !
+01 Nov 19, 17:34:01 [Instance] Rebooting ...
+01 Nov 19, 17:34:03 [INFO] Scanned <tkinter.Event object at 0x75052950>
+01 Nov 19, 17:34:03 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052950>
+01 Nov 19, 17:34:03 [Error] User with badge <tkinter.Event object at 0x75052950> was not found !
+01 Nov 19, 17:34:03 [Instance] Rebooting ...
+01 Nov 19, 17:34:04 [INFO] Scanned <tkinter.Event object at 0x750529d0>
+01 Nov 19, 17:34:04 |-- [DataBase] Searching with badge <tkinter.Event object at 0x750529d0>
+01 Nov 19, 17:34:04 [Error] User with badge <tkinter.Event object at 0x750529d0> was not found !
+01 Nov 19, 17:34:04 [Instance] Rebooting ...
+01 Nov 19, 17:34:04 [INFO] Scanned <tkinter.Event object at 0x75052a10>
+01 Nov 19, 17:34:04 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052a10>
+01 Nov 19, 17:34:04 [Error] User with badge <tkinter.Event object at 0x75052a10> was not found !
+01 Nov 19, 17:34:04 [Instance] Rebooting ...
+01 Nov 19, 17:34:05 [INFO] Scanned <tkinter.Event object at 0x75052a30>
+01 Nov 19, 17:34:05 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052a30>
+01 Nov 19, 17:34:05 [Error] User with badge <tkinter.Event object at 0x75052a30> was not found !
+01 Nov 19, 17:34:05 [Instance] Rebooting ...
+01 Nov 19, 17:34:05 [INFO] Scanned <tkinter.Event object at 0x75052950>
+01 Nov 19, 17:34:05 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052950>
+01 Nov 19, 17:34:05 [Error] User with badge <tkinter.Event object at 0x75052950> was not found !
+01 Nov 19, 17:34:05 [Instance] Rebooting ...
+01 Nov 19, 17:34:05 [INFO] Scanned <tkinter.Event object at 0x75052b30>
+01 Nov 19, 17:34:05 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052b30>
+01 Nov 19, 17:34:05 [Error] User with badge <tkinter.Event object at 0x75052b30> was not found !
+01 Nov 19, 17:34:05 [Instance] Rebooting ...
+01 Nov 19, 17:34:05 [INFO] Scanned <tkinter.Event object at 0x75052a90>
+01 Nov 19, 17:34:06 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052a90>
+01 Nov 19, 17:34:06 [Error] User with badge <tkinter.Event object at 0x75052a90> was not found !
+01 Nov 19, 17:34:06 [Instance] Rebooting ...
+01 Nov 19, 17:34:06 [INFO] Scanned <tkinter.Event object at 0x75052a50>
+01 Nov 19, 17:34:06 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052a50>
+01 Nov 19, 17:34:06 [Error] User with badge <tkinter.Event object at 0x75052a50> was not found !
+01 Nov 19, 17:34:06 [Instance] Rebooting ...
+01 Nov 19, 17:34:06 [INFO] Scanned <tkinter.Event object at 0x75052a30>
+01 Nov 19, 17:34:06 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052a30>
+01 Nov 19, 17:34:06 [Error] User with badge <tkinter.Event object at 0x75052a30> was not found !
+01 Nov 19, 17:34:06 [Instance] Rebooting ...
+01 Nov 19, 17:34:07 [INFO] Scanned <tkinter.Event object at 0x750529d0>
+01 Nov 19, 17:34:07 |-- [DataBase] Searching with badge <tkinter.Event object at 0x750529d0>
+01 Nov 19, 17:34:07 [Error] User with badge <tkinter.Event object at 0x750529d0> was not found !
+01 Nov 19, 17:34:07 [Instance] Rebooting ...
+01 Nov 19, 17:34:07 [INFO] Scanned <tkinter.Event object at 0x750529b0>
+01 Nov 19, 17:34:07 |-- [DataBase] Searching with badge <tkinter.Event object at 0x750529b0>
+01 Nov 19, 17:34:07 [Error] User with badge <tkinter.Event object at 0x750529b0> was not found !
+01 Nov 19, 17:34:07 [Instance] Rebooting ...
+01 Nov 19, 17:34:07 [INFO] Scanned <tkinter.Event object at 0x75052950>
+01 Nov 19, 17:34:07 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052950>
+01 Nov 19, 17:34:07 [Error] User with badge <tkinter.Event object at 0x75052950> was not found !
+01 Nov 19, 17:34:07 [Instance] Rebooting ...
+01 Nov 19, 17:34:07 [INFO] Scanned <tkinter.Event object at 0x750529f0>
+01 Nov 19, 17:34:07 |-- [DataBase] Searching with badge <tkinter.Event object at 0x750529f0>
+01 Nov 19, 17:34:07 [Error] User with badge <tkinter.Event object at 0x750529f0> was not found !
+01 Nov 19, 17:34:08 [Instance] Rebooting ...
+01 Nov 19, 17:34:08 [INFO] Scanned <tkinter.Event object at 0x75052a90>
+01 Nov 19, 17:34:08 |-- [DataBase] Searching with badge <tkinter.Event object at 0x75052a90>
+01 Nov 19, 17:34:08 [Error] User with badge <tkinter.Event object at 0x75052a90> was not found !
+01 Nov 19, 17:34:08 [Instance] Rebooting ...
+01 Nov 19, 17:34:27 [Stop]
+01 Nov 19, 17:34:27 |-- [GUI] Killed
+01 Nov 19, 17:34:27 |-- [MFRC522] Killed
+01 Nov 19, 17:34:27 |-- [DataBase] Killed
+01 Nov 19, 17:34:27 [Stop]
+01 Nov 19, 17:34:29 [Stop]
+01 Nov 19, 17:34:29 |-- [GUI] Killed
+01 Nov 19, 17:34:29 |-- [MFRC522] Killed
+01 Nov 19, 17:34:29 |-- [DataBase] Killed
+01 Nov 19, 17:34:29 [Stop]
+01 Nov 19, 17:35:37 [Start]
+01 Nov 19, 17:35:37 |-- [DataBase] Connected
+01 Nov 19, 17:35:37 |-- [MFRC522] Connected
+01 Nov 19, 17:35:37 |-- [GUI] Started
+01 Nov 19, 17:35:50 [INFO] Scanned <tkinter.Event object at 0x751b0b10>
+01 Nov 19, 17:35:50 |-- [DataBase] Searching with badge <tkinter.Event object at 0x751b0b10>
+01 Nov 19, 17:35:50 [Error] User with badge <tkinter.Event object at 0x751b0b10> was not found !
+01 Nov 19, 17:35:50 [Instance] Rebooting ...
+01 Nov 19, 17:36:18 [Stop]
+01 Nov 19, 17:36:18 |-- [GUI] Killed
+01 Nov 19, 17:36:19 |-- [MFRC522] Killed
+01 Nov 19, 17:36:19 |-- [DataBase] Killed
+01 Nov 19, 17:36:19 [Stop]
+01 Nov 19, 17:36:21 [Stop]
+01 Nov 19, 17:36:21 |-- [GUI] Killed
+01 Nov 19, 17:36:21 |-- [MFRC522] Killed
+01 Nov 19, 17:36:21 |-- [DataBase] Killed
+01 Nov 19, 17:36:21 [Stop]
+01 Nov 19, 17:39:44 [Start]
+01 Nov 19, 17:39:44 |-- [DataBase] Connected
+01 Nov 19, 17:39:44 |-- [MFRC522] Connected
+01 Nov 19, 17:39:45 |-- [GUI] Started
+01 Nov 19, 17:40:00 [INFO] Scanned <tkinter.Event object at 0x7519d150>
+01 Nov 19, 17:40:00 |-- [DataBase] Searching with badge <tkinter.Event object at 0x7519d150>
+01 Nov 19, 17:40:00 [Error] User with badge <tkinter.Event object at 0x7519d150> was not found !
+01 Nov 19, 17:40:00 [Instance] Rebooting ...
+01 Nov 19, 17:40:07 [Stop]
+01 Nov 19, 17:40:07 |-- [GUI] Killed
+01 Nov 19, 17:40:07 |-- [MFRC522] Killed
+01 Nov 19, 17:40:07 |-- [DataBase] Killed
+01 Nov 19, 17:40:07 [Stop]
+01 Nov 19, 17:40:08 [Stop]
+01 Nov 19, 17:40:08 |-- [GUI] Killed
+01 Nov 19, 17:40:08 |-- [MFRC522] Killed
+01 Nov 19, 17:40:08 |-- [DataBase] Killed
+01 Nov 19, 17:40:08 [Stop]
+01 Nov 19, 17:41:45 [Start]
+01 Nov 19, 17:41:45 |-- [DataBase] Connected
+01 Nov 19, 17:41:45 |-- [MFRC522] Connected
+01 Nov 19, 17:41:45 |-- [GUI] Started
+01 Nov 19, 17:41:48 [INFO] Scanned 550785624180
+01 Nov 19, 17:41:48 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 17:41:48 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 17:41:48 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 17:41:48 [Instance] Continuing ...
+01 Nov 19, 17:41:48 [Instance] Grade found : The admin
+01 Nov 19, 17:41:48 [GUI] Cleaned
+01 Nov 19, 17:41:48 [GUI] Starting for this grade ...
+01 Nov 19, 17:41:53 [Stop]
+01 Nov 19, 17:41:53 |-- [GUI] Killed
+01 Nov 19, 17:41:53 |-- [MFRC522] Killed
+01 Nov 19, 17:41:53 |-- [DataBase] Killed
+01 Nov 19, 17:41:53 [Stop]
+01 Nov 19, 17:46:02 [Start]
+01 Nov 19, 17:46:02 |-- [DataBase] Connected
+01 Nov 19, 17:46:02 |-- [MFRC522] Connected
+01 Nov 19, 17:46:02 |-- [GUI] Started
+01 Nov 19, 17:46:05 [INFO] Scanned 550785624180
+01 Nov 19, 17:46:05 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 17:46:05 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 17:46:05 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 17:46:05 [Instance] Continuing ...
+01 Nov 19, 17:46:05 [Instance] Grade found : The admin
+01 Nov 19, 17:46:05 [GUI] Cleaned
+01 Nov 19, 17:46:05 [GUI] Starting for this grade ...
+01 Nov 19, 17:46:11 [INFO] Scanned 218041433475
+01 Nov 19, 17:46:11 |-- [DataBase] Searching with badge 218041433475
+01 Nov 19, 17:46:11 |-- [DataBase] Found : Vincent Sahler, Grade:1, Credit:0.0, UUID:48
+01 Nov 19, 17:46:11 [Instance] User with badge 218041433475 was found !
+01 Nov 19, 17:46:11 [Instance] Continuing ...
+01 Nov 19, 17:46:11 [Instance] Grade found : user
+01 Nov 19, 17:46:11 [GUI] Cleaned
+01 Nov 19, 17:46:11 [GUI] Starting for this grade ...
+01 Nov 19, 17:46:11 [GUI] Starting User Gui
+01 Nov 19, 17:46:14 [Stop]
+01 Nov 19, 17:46:14 |-- [GUI] Killed
+01 Nov 19, 17:46:14 |-- [MFRC522] Killed
+01 Nov 19, 17:46:14 |-- [DataBase] Killed
+01 Nov 19, 17:46:14 [Stop]
+01 Nov 19, 17:47:49 [Start]
+01 Nov 19, 17:47:49 |-- [DataBase] Connected
+01 Nov 19, 17:47:49 |-- [MFRC522] Connected
+01 Nov 19, 17:47:49 |-- [GUI] Started
+01 Nov 19, 17:47:52 [INFO] Scanned 218041433475
+01 Nov 19, 17:47:52 |-- [DataBase] Searching with badge 218041433475
+01 Nov 19, 17:47:52 |-- [DataBase] Found : Vincent Sahler, Grade:1, Credit:0.0, UUID:48
+01 Nov 19, 17:47:52 [Instance] User with badge 218041433475 was found !
+01 Nov 19, 17:47:52 [Instance] Continuing ...
+01 Nov 19, 17:47:53 [Instance] Grade found : user
+01 Nov 19, 17:47:53 [GUI] Cleaned
+01 Nov 19, 17:47:53 [GUI] Starting for this grade ...
+01 Nov 19, 17:47:53 [GUI] Starting User Gui
+01 Nov 19, 17:47:55 [USER] Selection was 3
+01 Nov 19, 17:48:27 Finished Adding credit, état de finished : True
+01 Nov 19, 17:48:27 [GUI] Starting User Gui
+01 Nov 19, 17:48:32 [USER] Selection was 2
+01 Nov 19, 17:48:38 [Stop]
+01 Nov 19, 17:48:38 |-- [GUI] Killed
+01 Nov 19, 17:48:38 |-- [MFRC522] Killed
+01 Nov 19, 17:48:38 |-- [DataBase] Killed
+01 Nov 19, 17:48:38 [Stop]
+01 Nov 19, 17:48:44 [Stop]
+01 Nov 19, 17:48:44 |-- [GUI] Killed
+01 Nov 19, 17:48:44 |-- [MFRC522] Killed
+01 Nov 19, 17:48:44 |-- [DataBase] Killed
+01 Nov 19, 17:48:44 [Stop]
+01 Nov 19, 17:48:53 [Start]
+01 Nov 19, 17:48:53 |-- [DataBase] Connected
+01 Nov 19, 17:48:53 |-- [MFRC522] Connected
+01 Nov 19, 17:48:54 |-- [GUI] Started
+01 Nov 19, 17:48:57 [INFO] Scanned 550785624180
+01 Nov 19, 17:48:57 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 17:48:57 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 17:48:57 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 17:48:57 [Instance] Continuing ...
+01 Nov 19, 17:48:57 [Instance] Grade found : The admin
+01 Nov 19, 17:48:57 [GUI] Cleaned
+01 Nov 19, 17:48:57 [GUI] Starting for this grade ...
+01 Nov 19, 17:49:00 [GUI] 3 was selected
+01 Nov 19, 17:49:00 [GUI] Starting User Gui
+01 Nov 19, 17:49:01 [USER] Selection was 2
+01 Nov 19, 17:49:04 [Stop]
+01 Nov 19, 17:49:05 |-- [GUI] Killed
+01 Nov 19, 17:49:05 |-- [MFRC522] Killed
+01 Nov 19, 17:49:05 |-- [DataBase] Killed
+01 Nov 19, 17:49:05 [Stop]
+01 Nov 19, 17:49:06 [Stop]
+01 Nov 19, 17:49:06 |-- [GUI] Killed
+01 Nov 19, 17:49:06 |-- [MFRC522] Killed
+01 Nov 19, 17:49:06 |-- [DataBase] Killed
+01 Nov 19, 17:49:06 [Stop]
+01 Nov 19, 17:51:17 [Start]
+01 Nov 19, 17:51:17 |-- [DataBase] Connected
+01 Nov 19, 17:51:17 |-- [MFRC522] Connected
+01 Nov 19, 17:51:17 |-- [GUI] Started
+01 Nov 19, 17:51:20 [INFO] Scanned 982884817060
+01 Nov 19, 17:51:20 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 17:51:20 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 17:51:20 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 17:51:20 [Instance] Continuing ...
+01 Nov 19, 17:51:20 [Instance] Grade found : user
+01 Nov 19, 17:51:20 [GUI] Cleaned
+01 Nov 19, 17:51:21 [GUI] Starting for this grade ...
+01 Nov 19, 17:51:21 [GUI] Starting User Gui
+01 Nov 19, 17:51:24 [USER] Selection was 2
+01 Nov 19, 17:51:29 [Stop]
+01 Nov 19, 17:51:29 |-- [GUI] Killed
+01 Nov 19, 17:51:30 |-- [MFRC522] Killed
+01 Nov 19, 17:51:30 |-- [DataBase] Killed
+01 Nov 19, 17:51:30 [Stop]
+01 Nov 19, 17:51:31 [Stop]
+01 Nov 19, 17:51:31 |-- [GUI] Killed
+01 Nov 19, 17:51:31 |-- [MFRC522] Killed
+01 Nov 19, 17:51:31 |-- [DataBase] Killed
+01 Nov 19, 17:51:31 [Stop]
+01 Nov 19, 17:55:20 [Start]
+01 Nov 19, 17:55:20 |-- [DataBase] Connected
+01 Nov 19, 17:55:20 |-- [MFRC522] Connected
+01 Nov 19, 17:55:21 |-- [GUI] Started
+01 Nov 19, 17:55:25 [INFO] Scanned 982884817060
+01 Nov 19, 17:55:25 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 17:55:25 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 17:55:25 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 17:55:25 [Instance] Continuing ...
+01 Nov 19, 17:55:25 [Instance] Grade found : user
+01 Nov 19, 17:55:25 [GUI] Cleaned
+01 Nov 19, 17:55:25 [GUI] Starting for this grade ...
+01 Nov 19, 17:55:25 [GUI] Starting User Gui
+01 Nov 19, 17:55:27 [USER] Selection was 3
+01 Nov 19, 17:56:18 [Stop]
+01 Nov 19, 17:56:19 |-- [GUI] Killed
+01 Nov 19, 17:56:19 |-- [MFRC522] Killed
+01 Nov 19, 17:56:19 |-- [DataBase] Killed
+01 Nov 19, 17:56:19 [Stop]
+01 Nov 19, 17:58:14 [Start]
+01 Nov 19, 17:58:14 |-- [DataBase] Connected
+01 Nov 19, 17:58:14 |-- [MFRC522] Connected
+01 Nov 19, 17:58:14 |-- [GUI] Started
+01 Nov 19, 17:58:17 [INFO] Scanned 982884817060
+01 Nov 19, 17:58:17 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 17:58:17 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 17:58:17 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 17:58:17 [Instance] Continuing ...
+01 Nov 19, 17:58:17 [Instance] Grade found : user
+01 Nov 19, 17:58:17 [GUI] Cleaned
+01 Nov 19, 17:58:17 [GUI] Starting for this grade ...
+01 Nov 19, 17:58:17 [GUI] Starting User Gui
+01 Nov 19, 17:58:21 [USER] Selection was 3
+01 Nov 19, 17:58:30 [Stop]
+01 Nov 19, 17:58:30 |-- [GUI] Killed
+01 Nov 19, 17:58:30 |-- [MFRC522] Killed
+01 Nov 19, 17:58:30 |-- [DataBase] Killed
+01 Nov 19, 17:58:30 [Stop]
+01 Nov 19, 18:04:03 [Start]
+01 Nov 19, 18:04:03 |-- [DataBase] Connected
+01 Nov 19, 18:04:03 |-- [MFRC522] Connected
+01 Nov 19, 18:04:04 |-- [GUI] Started
+01 Nov 19, 18:04:07 [INFO] Scanned 982884817060
+01 Nov 19, 18:04:07 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:04:07 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:04:07 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:04:07 [Instance] Continuing ...
+01 Nov 19, 18:04:07 [Instance] Grade found : user
+01 Nov 19, 18:04:07 [GUI] Cleaned
+01 Nov 19, 18:04:07 [GUI] Starting for this grade ...
+01 Nov 19, 18:04:07 [GUI] Starting User Gui
+01 Nov 19, 18:04:11 [USER] Selection was 3
+01 Nov 19, 18:04:27 [Stop]
+01 Nov 19, 18:04:27 |-- [GUI] Killed
+01 Nov 19, 18:04:27 |-- [MFRC522] Killed
+01 Nov 19, 18:04:27 |-- [DataBase] Killed
+01 Nov 19, 18:04:27 [Stop]
+01 Nov 19, 18:04:49 [Start]
+01 Nov 19, 18:04:49 |-- [DataBase] Connected
+01 Nov 19, 18:04:49 |-- [MFRC522] Connected
+01 Nov 19, 18:04:49 |-- [GUI] Started
+01 Nov 19, 18:04:53 [INFO] Scanned 982884817060
+01 Nov 19, 18:04:53 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:04:53 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:04:53 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:04:53 [Instance] Continuing ...
+01 Nov 19, 18:04:53 [Instance] Grade found : user
+01 Nov 19, 18:04:53 [GUI] Cleaned
+01 Nov 19, 18:04:53 [GUI] Starting for this grade ...
+01 Nov 19, 18:04:53 [GUI] Starting User Gui
+01 Nov 19, 18:04:56 [USER] Selection was 3
+01 Nov 19, 18:05:14 [Stop]
+01 Nov 19, 18:05:14 |-- [GUI] Killed
+01 Nov 19, 18:05:14 |-- [MFRC522] Killed
+01 Nov 19, 18:05:14 |-- [DataBase] Killed
+01 Nov 19, 18:05:14 [Stop]
+01 Nov 19, 18:06:24 [Start]
+01 Nov 19, 18:06:24 |-- [DataBase] Connected
+01 Nov 19, 18:06:24 |-- [MFRC522] Connected
+01 Nov 19, 18:06:24 |-- [GUI] Started
+01 Nov 19, 18:06:30 [INFO] Scanned 982884817060
+01 Nov 19, 18:06:30 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:06:30 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:06:30 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:06:30 [Instance] Continuing ...
+01 Nov 19, 18:06:30 [Instance] Grade found : user
+01 Nov 19, 18:06:30 [GUI] Cleaned
+01 Nov 19, 18:06:30 [GUI] Starting for this grade ...
+01 Nov 19, 18:06:31 [GUI] Starting User Gui
+01 Nov 19, 18:06:33 [Stop]
+01 Nov 19, 18:06:33 |-- [GUI] Killed
+01 Nov 19, 18:06:33 |-- [MFRC522] Killed
+01 Nov 19, 18:06:33 |-- [DataBase] Killed
+01 Nov 19, 18:06:33 [Stop]
+01 Nov 19, 18:06:43 [Start]
+01 Nov 19, 18:06:43 |-- [DataBase] Connected
+01 Nov 19, 18:06:43 |-- [MFRC522] Connected
+01 Nov 19, 18:06:43 |-- [GUI] Started
+01 Nov 19, 18:06:47 [INFO] Scanned 982884817060
+01 Nov 19, 18:06:47 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:06:47 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:06:47 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:06:47 [Instance] Continuing ...
+01 Nov 19, 18:06:47 [Instance] Grade found : user
+01 Nov 19, 18:06:47 [GUI] Cleaned
+01 Nov 19, 18:06:47 [GUI] Starting for this grade ...
+01 Nov 19, 18:06:47 [GUI] Starting User Gui
+01 Nov 19, 18:06:53 [USER] Selection was 3
+01 Nov 19, 18:06:58 [Stop]
+01 Nov 19, 18:06:58 |-- [GUI] Killed
+01 Nov 19, 18:06:58 |-- [MFRC522] Killed
+01 Nov 19, 18:06:58 |-- [DataBase] Killed
+01 Nov 19, 18:06:58 [Stop]
+01 Nov 19, 18:10:29 [Start]
+01 Nov 19, 18:10:29 |-- [DataBase] Connected
+01 Nov 19, 18:10:29 |-- [MFRC522] Connected
+01 Nov 19, 18:10:30 |-- [GUI] Started
+01 Nov 19, 18:10:32 [INFO] Scanned 982884817060
+01 Nov 19, 18:10:32 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:10:32 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:10:32 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:10:32 [Instance] Continuing ...
+01 Nov 19, 18:10:32 [Instance] Grade found : user
+01 Nov 19, 18:10:33 [GUI] Cleaned
+01 Nov 19, 18:10:33 [GUI] Starting for this grade ...
+01 Nov 19, 18:10:33 [GUI] Starting User Gui
+01 Nov 19, 18:10:35 [USER] Selection was 3
+01 Nov 19, 18:10:57 [Stop]
+01 Nov 19, 18:10:58 |-- [GUI] Killed
+01 Nov 19, 18:10:58 |-- [MFRC522] Killed
+01 Nov 19, 18:10:58 |-- [DataBase] Killed
+01 Nov 19, 18:10:58 [Stop]
+01 Nov 19, 18:11:24 [Start]
+01 Nov 19, 18:11:24 |-- [DataBase] Connected
+01 Nov 19, 18:11:24 |-- [MFRC522] Connected
+01 Nov 19, 18:11:24 |-- [GUI] Started
+01 Nov 19, 18:11:27 [INFO] Scanned 982884817060
+01 Nov 19, 18:11:27 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:11:27 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:11:27 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:11:27 [Instance] Continuing ...
+01 Nov 19, 18:11:27 [Instance] Grade found : user
+01 Nov 19, 18:11:27 [GUI] Cleaned
+01 Nov 19, 18:11:27 [GUI] Starting for this grade ...
+01 Nov 19, 18:11:27 [GUI] Starting User Gui
+01 Nov 19, 18:11:30 [USER] Selection was 3
+01 Nov 19, 18:11:58 [Stop]
+01 Nov 19, 18:11:58 |-- [GUI] Killed
+01 Nov 19, 18:11:59 |-- [MFRC522] Killed
+01 Nov 19, 18:11:59 |-- [DataBase] Killed
+01 Nov 19, 18:11:59 [Stop]
+01 Nov 19, 18:12:09 [Start]
+01 Nov 19, 18:12:09 |-- [DataBase] Connected
+01 Nov 19, 18:12:09 |-- [MFRC522] Connected
+01 Nov 19, 18:12:09 |-- [GUI] Started
+01 Nov 19, 18:12:11 [INFO] Scanned 982884817060
+01 Nov 19, 18:12:11 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:12:12 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:12:12 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:12:12 [Instance] Continuing ...
+01 Nov 19, 18:12:12 [Instance] Grade found : user
+01 Nov 19, 18:12:12 [GUI] Cleaned
+01 Nov 19, 18:12:12 [GUI] Starting for this grade ...
+01 Nov 19, 18:12:12 [GUI] Starting User Gui
+01 Nov 19, 18:12:14 [USER] Selection was 3
+01 Nov 19, 18:12:39 [Stop]
+01 Nov 19, 18:12:40 |-- [GUI] Killed
+01 Nov 19, 18:12:40 |-- [MFRC522] Killed
+01 Nov 19, 18:12:40 |-- [DataBase] Killed
+01 Nov 19, 18:12:40 [Stop]
+01 Nov 19, 18:13:45 [Start]
+01 Nov 19, 18:13:45 |-- [DataBase] Connected
+01 Nov 19, 18:13:45 |-- [MFRC522] Connected
+01 Nov 19, 18:13:45 |-- [GUI] Started
+01 Nov 19, 18:13:49 [INFO] Scanned 982884817060
+01 Nov 19, 18:13:49 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:13:49 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:13:49 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:13:49 [Instance] Continuing ...
+01 Nov 19, 18:13:49 [Instance] Grade found : user
+01 Nov 19, 18:13:49 [GUI] Cleaned
+01 Nov 19, 18:13:49 [GUI] Starting for this grade ...
+01 Nov 19, 18:13:49 [GUI] Starting User Gui
+01 Nov 19, 18:13:52 [USER] Selection was 3
+01 Nov 19, 18:14:06 [Stop]
+01 Nov 19, 18:14:06 |-- [GUI] Killed
+01 Nov 19, 18:14:06 |-- [MFRC522] Killed
+01 Nov 19, 18:14:06 |-- [DataBase] Killed
+01 Nov 19, 18:14:06 [Stop]
+01 Nov 19, 18:14:10 [Start]
+01 Nov 19, 18:14:10 |-- [DataBase] Connected
+01 Nov 19, 18:14:10 |-- [MFRC522] Connected
+01 Nov 19, 18:14:11 |-- [GUI] Started
+01 Nov 19, 18:14:14 [INFO] Scanned 550785624180
+01 Nov 19, 18:14:14 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:14:14 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:14:14 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:14:14 [Instance] Continuing ...
+01 Nov 19, 18:14:14 [Instance] Grade found : The admin
+01 Nov 19, 18:14:14 [GUI] Cleaned
+01 Nov 19, 18:14:15 [GUI] Starting for this grade ...
+01 Nov 19, 18:14:20 [GUI] 3 was selected
+01 Nov 19, 18:14:20 [GUI] Starting User Gui
+01 Nov 19, 18:14:21 [USER] Selection was 3
+01 Nov 19, 18:14:31 [Stop]
+01 Nov 19, 18:14:32 |-- [GUI] Killed
+01 Nov 19, 18:14:32 |-- [MFRC522] Killed
+01 Nov 19, 18:14:32 |-- [DataBase] Killed
+01 Nov 19, 18:14:32 [Stop]
+01 Nov 19, 18:14:35 [Start]
+01 Nov 19, 18:14:35 |-- [DataBase] Connected
+01 Nov 19, 18:14:35 |-- [MFRC522] Connected
+01 Nov 19, 18:14:36 |-- [GUI] Started
+01 Nov 19, 18:14:38 [INFO] Scanned 550785624180
+01 Nov 19, 18:14:38 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:14:38 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:14:38 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:14:38 [Instance] Continuing ...
+01 Nov 19, 18:14:38 [Instance] Grade found : The admin
+01 Nov 19, 18:14:38 [GUI] Cleaned
+01 Nov 19, 18:14:38 [GUI] Starting for this grade ...
+01 Nov 19, 18:14:43 [GUI] 1 was selected
+01 Nov 19, 18:14:45 [INFO] Scanned 550785624180
+01 Nov 19, 18:14:45 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:14:45 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:14:45 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:14:45 [Instance] Continuing ...
+01 Nov 19, 18:14:45 [Instance] Grade found : The admin
+01 Nov 19, 18:14:45 [GUI] Cleaned
+01 Nov 19, 18:14:45 [GUI] Starting for this grade ...
+01 Nov 19, 18:14:48 [GUI] 3 was selected
+01 Nov 19, 18:14:48 [GUI] Starting User Gui
+01 Nov 19, 18:14:49 [USER] Selection was 1
+01 Nov 19, 18:14:54 [INFO] Scanned 550785624180
+01 Nov 19, 18:14:54 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:14:54 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:14:54 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:14:54 [Instance] Continuing ...
+01 Nov 19, 18:14:54 [Instance] Grade found : The admin
+01 Nov 19, 18:14:54 [GUI] Cleaned
+01 Nov 19, 18:14:54 [GUI] Starting for this grade ...
+01 Nov 19, 18:15:24 [Stop]
+01 Nov 19, 18:15:24 |-- [GUI] Killed
+01 Nov 19, 18:15:25 |-- [MFRC522] Killed
+01 Nov 19, 18:15:25 |-- [DataBase] Killed
+01 Nov 19, 18:15:25 [Stop]
+01 Nov 19, 18:15:32 [Start]
+01 Nov 19, 18:15:32 |-- [DataBase] Connected
+01 Nov 19, 18:15:32 |-- [MFRC522] Connected
+01 Nov 19, 18:15:32 |-- [GUI] Started
+01 Nov 19, 18:15:36 [INFO] Scanned 550785624180
+01 Nov 19, 18:15:36 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:15:36 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:15:36 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:15:36 [Instance] Continuing ...
+01 Nov 19, 18:15:37 [Instance] Grade found : The admin
+01 Nov 19, 18:15:37 [GUI] Cleaned
+01 Nov 19, 18:15:37 [GUI] Starting for this grade ...
+01 Nov 19, 18:15:38 [GUI] 3 was selected
+01 Nov 19, 18:15:38 [GUI] Starting User Gui
+01 Nov 19, 18:15:39 [USER] Selection was 3
+01 Nov 19, 18:15:48 [Stop]
+01 Nov 19, 18:15:49 |-- [GUI] Killed
+01 Nov 19, 18:15:49 |-- [MFRC522] Killed
+01 Nov 19, 18:15:49 |-- [DataBase] Killed
+01 Nov 19, 18:15:49 [Stop]
+01 Nov 19, 18:18:12 [Start]
+01 Nov 19, 18:18:12 |-- [DataBase] Connected
+01 Nov 19, 18:18:12 |-- [MFRC522] Connected
+01 Nov 19, 18:18:12 |-- [GUI] Started
+01 Nov 19, 18:18:15 [INFO] Scanned 550785624180
+01 Nov 19, 18:18:15 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:18:15 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:18:15 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:18:15 [Instance] Continuing ...
+01 Nov 19, 18:18:15 [Instance] Grade found : The admin
+01 Nov 19, 18:18:15 [GUI] Cleaned
+01 Nov 19, 18:18:15 [GUI] Starting for this grade ...
+01 Nov 19, 18:18:17 [GUI] 3 was selected
+01 Nov 19, 18:18:17 [GUI] Starting User Gui
+01 Nov 19, 18:18:18 [USER] Selection was 3
+01 Nov 19, 18:18:19 Finished Adding credit, état de finished : False
+01 Nov 19, 18:18:20 [GUI] Starting User Gui
+01 Nov 19, 18:18:20 [USER] Selection was 0
+01 Nov 19, 18:18:20 [INFO] Scanned 550785624180
+01 Nov 19, 18:18:20 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:18:20 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:18:20 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:18:20 [Instance] Continuing ...
+01 Nov 19, 18:18:20 [Instance] Grade found : The admin
+01 Nov 19, 18:18:20 [GUI] Cleaned
+01 Nov 19, 18:18:20 [GUI] Starting for this grade ...
+01 Nov 19, 18:18:30 [Stop]
+01 Nov 19, 18:18:30 |-- [GUI] Killed
+01 Nov 19, 18:18:30 |-- [MFRC522] Killed
+01 Nov 19, 18:18:30 |-- [DataBase] Killed
+01 Nov 19, 18:18:30 [Stop]
+01 Nov 19, 18:18:31 [Stop]
+01 Nov 19, 18:18:31 |-- [GUI] Killed
+01 Nov 19, 18:18:31 |-- [MFRC522] Killed
+01 Nov 19, 18:18:31 |-- [DataBase] Killed
+01 Nov 19, 18:18:31 [Stop]
+01 Nov 19, 18:22:04 [Start]
+01 Nov 19, 18:22:04 |-- [DataBase] Connected
+01 Nov 19, 18:22:04 |-- [MFRC522] Connected
+01 Nov 19, 18:22:05 |-- [GUI] Started
+01 Nov 19, 18:22:31 [INFO] Scanned 1024047370409
+01 Nov 19, 18:22:31 |-- [DataBase] Searching with badge 1024047370409
+01 Nov 19, 18:22:31 [Error] User with badge 1024047370409 was not found !
+01 Nov 19, 18:22:31 [Instance] Rebooting ...
+01 Nov 19, 18:22:31 [INFO] Scanned 1024047370409
+01 Nov 19, 18:22:31 |-- [DataBase] Searching with badge 1024047370409
+01 Nov 19, 18:22:31 [Error] User with badge 1024047370409 was not found !
+01 Nov 19, 18:22:31 [Instance] Rebooting ...
+01 Nov 19, 18:22:31 [INFO] Scanned 1024047370409
+01 Nov 19, 18:22:32 |-- [DataBase] Searching with badge 1024047370409
+01 Nov 19, 18:22:32 [Error] User with badge 1024047370409 was not found !
+01 Nov 19, 18:22:32 [Instance] Rebooting ...
+01 Nov 19, 18:22:32 [INFO] Scanned 1024047370409
+01 Nov 19, 18:22:32 |-- [DataBase] Searching with badge 1024047370409
+01 Nov 19, 18:22:32 [Error] User with badge 1024047370409 was not found !
+01 Nov 19, 18:22:32 [Instance] Rebooting ...
+01 Nov 19, 18:22:32 [INFO] Scanned 1024047370409
+01 Nov 19, 18:22:32 |-- [DataBase] Searching with badge 1024047370409
+01 Nov 19, 18:22:32 [Error] User with badge 1024047370409 was not found !
+01 Nov 19, 18:22:32 [Instance] Rebooting ...
+01 Nov 19, 18:22:32 [INFO] Scanned 1024047370409
+01 Nov 19, 18:22:32 |-- [DataBase] Searching with badge 1024047370409
+01 Nov 19, 18:22:32 [Error] User with badge 1024047370409 was not found !
+01 Nov 19, 18:22:32 [Instance] Rebooting ...
+01 Nov 19, 18:22:32 [INFO] Scanned 1024047370409
+01 Nov 19, 18:22:32 |-- [DataBase] Searching with badge 1024047370409
+01 Nov 19, 18:22:32 [Error] User with badge 1024047370409 was not found !
+01 Nov 19, 18:22:32 [Instance] Rebooting ...
+01 Nov 19, 18:22:56 [INFO] Scanned 550785624180
+01 Nov 19, 18:22:56 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:22:56 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:22:56 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:22:56 [Instance] Continuing ...
+01 Nov 19, 18:22:56 [Instance] Grade found : The admin
+01 Nov 19, 18:22:56 [GUI] Cleaned
+01 Nov 19, 18:22:56 [GUI] Starting for this grade ...
+01 Nov 19, 18:22:58 [GUI] 1 was selected
+01 Nov 19, 18:23:09 [INFO] Scanned 550785624180
+01 Nov 19, 18:23:09 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:23:09 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:23:09 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:23:09 [Instance] Continuing ...
+01 Nov 19, 18:23:09 [Instance] Grade found : The admin
+01 Nov 19, 18:23:09 [GUI] Cleaned
+01 Nov 19, 18:23:09 [GUI] Starting for this grade ...
+01 Nov 19, 18:23:15 [INFO] Scanned 550785624180
+01 Nov 19, 18:23:15 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 18:23:15 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 18:23:15 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 18:23:15 [Instance] Continuing ...
+01 Nov 19, 18:23:15 [Instance] Grade found : The admin
+01 Nov 19, 18:23:15 [GUI] Cleaned
+01 Nov 19, 18:23:15 [GUI] Starting for this grade ...
+01 Nov 19, 18:23:18 [GUI] 1 was selected
+01 Nov 19, 18:26:37 [INFO] Scanned 1024047370409
+01 Nov 19, 18:26:37 |-- [DataBase] Searching with badge 1024047370409
+01 Nov 19, 18:26:37 |-- [DataBase] Found : Bertrand SAHLER, Grade:0, Credit:0.0, UUID:49
+01 Nov 19, 18:26:37 [Instance] User with badge 1024047370409 was found !
+01 Nov 19, 18:26:37 [Instance] Continuing ...
+01 Nov 19, 18:26:37 [Instance] Grade found : admin
+01 Nov 19, 18:26:37 [GUI] Cleaned
+01 Nov 19, 18:26:37 [GUI] Starting for this grade ...
+01 Nov 19, 18:26:39 [GUI] 1 was selected
+01 Nov 19, 18:29:41 [INFO] Scanned 1024047370409
+01 Nov 19, 18:29:41 |-- [DataBase] Searching with badge 1024047370409
+01 Nov 19, 18:29:41 |-- [DataBase] Found : Bertrand SAHLER, Grade:0, Credit:0.0, UUID:49
+01 Nov 19, 18:29:41 [Instance] User with badge 1024047370409 was found !
+01 Nov 19, 18:29:41 [Instance] Continuing ...
+01 Nov 19, 18:29:41 [Instance] Grade found : admin
+01 Nov 19, 18:29:41 [GUI] Cleaned
+01 Nov 19, 18:29:41 [GUI] Starting for this grade ...
+01 Nov 19, 18:41:26 [Stop]
+01 Nov 19, 18:41:26 |-- [GUI] Killed
+01 Nov 19, 18:41:26 |-- [MFRC522] Killed
+01 Nov 19, 18:41:26 |-- [DataBase] Killed
+01 Nov 19, 18:41:26 [Stop]
+01 Nov 19, 18:41:28 [Stop]
+01 Nov 19, 18:41:28 |-- [GUI] Killed
+01 Nov 19, 18:41:28 |-- [MFRC522] Killed
+01 Nov 19, 18:41:28 |-- [DataBase] Killed
+01 Nov 19, 18:41:28 [Stop]
+01 Nov 19, 18:41:49 [Start]
+01 Nov 19, 18:41:49 |-- [DataBase] Connected
+01 Nov 19, 18:41:49 |-- [MFRC522] Connected
+01 Nov 19, 18:41:49 |-- [GUI] Started
+01 Nov 19, 18:41:52 [INFO] Scanned 982884817060
+01 Nov 19, 18:41:52 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:41:52 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:41:52 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:41:52 [Instance] Continuing ...
+01 Nov 19, 18:41:52 [Instance] Grade found : user
+01 Nov 19, 18:41:52 [GUI] Cleaned
+01 Nov 19, 18:41:52 [GUI] Starting for this grade ...
+01 Nov 19, 18:41:52 [GUI] Starting User Gui
+01 Nov 19, 18:41:54 [USER] Selection was 3
+01 Nov 19, 18:42:01 [Stop]
+01 Nov 19, 18:42:01 |-- [GUI] Killed
+01 Nov 19, 18:42:01 |-- [MFRC522] Killed
+01 Nov 19, 18:42:01 |-- [DataBase] Killed
+01 Nov 19, 18:42:01 [Stop]
+01 Nov 19, 18:42:49 [Start]
+01 Nov 19, 18:42:49 |-- [DataBase] Connected
+01 Nov 19, 18:42:49 |-- [MFRC522] Connected
+01 Nov 19, 18:42:50 |-- [GUI] Started
+01 Nov 19, 18:42:53 [INFO] Scanned 982884817060
+01 Nov 19, 18:42:53 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:42:53 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:42:53 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:42:53 [Instance] Continuing ...
+01 Nov 19, 18:42:53 [Instance] Grade found : user
+01 Nov 19, 18:42:53 [GUI] Cleaned
+01 Nov 19, 18:42:53 [GUI] Starting for this grade ...
+01 Nov 19, 18:42:53 [GUI] Starting User Gui
+01 Nov 19, 18:42:55 [USER] Selection was 3
+01 Nov 19, 18:42:59 [Stop]
+01 Nov 19, 18:43:00 |-- [GUI] Killed
+01 Nov 19, 18:43:00 |-- [MFRC522] Killed
+01 Nov 19, 18:43:00 |-- [DataBase] Killed
+01 Nov 19, 18:43:00 [Stop]
+01 Nov 19, 18:48:08 [Start]
+01 Nov 19, 18:48:08 |-- [DataBase] Connected
+01 Nov 19, 18:48:09 |-- [MFRC522] Connected
+01 Nov 19, 18:49:37 [Start]
+01 Nov 19, 18:49:37 |-- [DataBase] Connected
+01 Nov 19, 18:49:37 |-- [MFRC522] Connected
+01 Nov 19, 18:49:37 |-- [GUI] Started
+01 Nov 19, 18:49:43 [INFO] Scanned 982884817060
+01 Nov 19, 18:49:43 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:49:43 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:49:43 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:49:43 [Instance] Continuing ...
+01 Nov 19, 18:49:43 [Instance] Grade found : user
+01 Nov 19, 18:49:43 [GUI] Cleaned
+01 Nov 19, 18:49:43 [GUI] Starting for this grade ...
+01 Nov 19, 18:49:43 [GUI] Starting User Gui
+01 Nov 19, 18:49:48 [USER] Selection was 3
+01 Nov 19, 18:50:04 [Stop]
+01 Nov 19, 18:50:04 |-- [GUI] Killed
+01 Nov 19, 18:50:04 |-- [MFRC522] Killed
+01 Nov 19, 18:50:04 |-- [DataBase] Killed
+01 Nov 19, 18:50:04 [Stop]
+01 Nov 19, 18:54:11 [Start]
+01 Nov 19, 18:54:11 |-- [DataBase] Connected
+01 Nov 19, 18:54:11 |-- [MFRC522] Connected
+01 Nov 19, 18:54:11 |-- [GUI] Started
+01 Nov 19, 18:54:15 [INFO] Scanned 982884817060
+01 Nov 19, 18:54:15 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:54:15 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:54:15 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:54:15 [Instance] Continuing ...
+01 Nov 19, 18:54:15 [Instance] Grade found : user
+01 Nov 19, 18:54:15 [GUI] Cleaned
+01 Nov 19, 18:54:15 [GUI] Starting for this grade ...
+01 Nov 19, 18:54:15 [GUI] Starting User Gui
+01 Nov 19, 18:54:19 [USER] Selection was 3
+01 Nov 19, 18:55:12 [Stop]
+01 Nov 19, 18:55:12 |-- [GUI] Killed
+01 Nov 19, 18:55:12 |-- [MFRC522] Killed
+01 Nov 19, 18:55:12 |-- [DataBase] Killed
+01 Nov 19, 18:55:12 [Stop]
+01 Nov 19, 18:56:10 [Start]
+01 Nov 19, 18:56:10 |-- [DataBase] Connected
+01 Nov 19, 18:56:10 |-- [MFRC522] Connected
+01 Nov 19, 18:56:10 |-- [GUI] Started
+01 Nov 19, 18:57:28 [INFO] Scanned 982884817060
+01 Nov 19, 18:57:28 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:57:28 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:57:28 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:57:28 [Instance] Continuing ...
+01 Nov 19, 18:57:28 [Instance] Grade found : user
+01 Nov 19, 18:57:28 [GUI] Cleaned
+01 Nov 19, 18:57:28 [GUI] Starting for this grade ...
+01 Nov 19, 18:57:29 [GUI] Starting User Gui
+01 Nov 19, 18:57:35 [USER] Selection was 2
+01 Nov 19, 18:57:43 [INFO] Scanned 982884817060
+01 Nov 19, 18:57:43 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:57:43 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:57:43 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:57:43 [Instance] Continuing ...
+01 Nov 19, 18:57:43 [Instance] Grade found : user
+01 Nov 19, 18:57:43 [GUI] Cleaned
+01 Nov 19, 18:57:43 [GUI] Starting for this grade ...
+01 Nov 19, 18:57:43 [GUI] Starting User Gui
+01 Nov 19, 18:57:46 [USER] Selection was 0
+01 Nov 19, 18:57:46 [INFO] Scanned 982884817060
+01 Nov 19, 18:57:46 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:57:46 |-- [DataBase] Found : j g, Grade:1, Credit:-3.0, UUID:46
+01 Nov 19, 18:57:46 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:57:46 [Instance] Continuing ...
+01 Nov 19, 18:57:46 [Instance] Grade found : user
+01 Nov 19, 18:57:46 [GUI] Cleaned
+01 Nov 19, 18:57:46 [GUI] Starting for this grade ...
+01 Nov 19, 18:57:46 [GUI] Starting User Gui
+01 Nov 19, 18:57:50 [USER] Selection was 1
+01 Nov 19, 18:58:29 [INFO] Scanned 982884817060
+01 Nov 19, 18:58:29 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:58:30 |-- [DataBase] Found : j g, Grade:1, Credit:-6.0, UUID:46
+01 Nov 19, 18:58:30 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:58:30 [Instance] Continuing ...
+01 Nov 19, 18:58:30 [Instance] Grade found : user
+01 Nov 19, 18:58:30 [GUI] Cleaned
+01 Nov 19, 18:58:30 [GUI] Starting for this grade ...
+01 Nov 19, 18:58:30 [GUI] Starting User Gui
+01 Nov 19, 18:58:32 [USER] Selection was 2
+01 Nov 19, 18:58:39 [INFO] Scanned 982884817060
+01 Nov 19, 18:58:39 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:58:39 |-- [DataBase] Found : j g, Grade:1, Credit:-6.0, UUID:46
+01 Nov 19, 18:58:39 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:58:40 [Instance] Continuing ...
+01 Nov 19, 18:58:40 [Instance] Grade found : user
+01 Nov 19, 18:58:40 [GUI] Cleaned
+01 Nov 19, 18:58:40 [GUI] Starting for this grade ...
+01 Nov 19, 18:58:40 [GUI] Starting User Gui
+01 Nov 19, 18:58:45 [USER] Selection was 3
+01 Nov 19, 18:58:59 Finished Adding credit, état de finished : True
+01 Nov 19, 18:58:59 [GUI] Starting User Gui
+01 Nov 19, 18:59:01 [USER] Selection was 2
+01 Nov 19, 18:59:09 [INFO] Scanned 982884817060
+01 Nov 19, 18:59:09 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 18:59:10 |-- [DataBase] Found : j g, Grade:1, Credit:494.0, UUID:46
+01 Nov 19, 18:59:10 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 18:59:10 [Instance] Continuing ...
+01 Nov 19, 18:59:10 [Instance] Grade found : user
+01 Nov 19, 18:59:10 [GUI] Cleaned
+01 Nov 19, 18:59:10 [GUI] Starting for this grade ...
+01 Nov 19, 18:59:10 [GUI] Starting User Gui
+01 Nov 19, 19:00:05 [USER] Selection was 0
+01 Nov 19, 19:00:06 [Stop]
+01 Nov 19, 19:00:06 |-- [GUI] Killed
+01 Nov 19, 19:00:06 |-- [MFRC522] Killed
+01 Nov 19, 19:00:06 |-- [DataBase] Killed
+01 Nov 19, 19:00:06 [Stop]
+01 Nov 19, 19:00:08 [Stop]
+01 Nov 19, 19:00:08 |-- [GUI] Killed
+01 Nov 19, 19:00:08 |-- [MFRC522] Killed
+01 Nov 19, 19:00:08 |-- [DataBase] Killed
+01 Nov 19, 19:00:08 [Stop]
+01 Nov 19, 19:01:29 [Start]
+01 Nov 19, 19:01:29 |-- [DataBase] Connected
+01 Nov 19, 19:01:29 |-- [MFRC522] Connected
+01 Nov 19, 19:01:30 |-- [GUI] Started
+01 Nov 19, 19:01:32 [INFO] Scanned 982884817060
+01 Nov 19, 19:01:32 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 19:01:32 |-- [DataBase] Found : j g, Grade:1, Credit:494.0, UUID:46
+01 Nov 19, 19:01:32 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 19:01:32 [Instance] Continuing ...
+01 Nov 19, 19:01:32 [Instance] Grade found : user
+01 Nov 19, 19:01:32 [GUI] Cleaned
+01 Nov 19, 19:01:32 [GUI] Starting for this grade ...
+01 Nov 19, 19:01:32 [GUI] Starting User Gui
+01 Nov 19, 19:01:36 [USER] Selection was 3
+01 Nov 19, 19:01:42 Finished Adding credit, état de finished : True
+01 Nov 19, 19:01:42 [GUI] Starting User Gui
+01 Nov 19, 19:01:44 [USER] Selection was 2
+01 Nov 19, 19:01:46 [Stop]
+01 Nov 19, 19:01:47 |-- [GUI] Killed
+01 Nov 19, 19:01:47 |-- [MFRC522] Killed
+01 Nov 19, 19:01:47 |-- [DataBase] Killed
+01 Nov 19, 19:01:47 [Stop]
+01 Nov 19, 19:02:36 [Start]
+01 Nov 19, 19:02:36 |-- [DataBase] Connected
+01 Nov 19, 19:02:36 |-- [MFRC522] Connected
+01 Nov 19, 19:02:36 |-- [GUI] Started
+01 Nov 19, 19:02:40 [INFO] Scanned 550785624180
+01 Nov 19, 19:02:40 |-- [DataBase] Searching with badge 550785624180
+01 Nov 19, 19:02:40 |-- [DataBase] Found : Vincent ADMIN, Grade:-1, Credit:0.0, UUID:1
+01 Nov 19, 19:02:40 [Instance] User with badge 550785624180 was found !
+01 Nov 19, 19:02:40 [Instance] Continuing ...
+01 Nov 19, 19:02:40 [Instance] Grade found : The admin
+01 Nov 19, 19:02:40 [GUI] Cleaned
+01 Nov 19, 19:02:40 [GUI] Starting for this grade ...
+01 Nov 19, 19:02:46 [INFO] Scanned 982884817060
+01 Nov 19, 19:02:46 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 19:02:46 |-- [DataBase] Found : j g, Grade:1, Credit:497.0, UUID:46
+01 Nov 19, 19:02:46 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 19:02:46 [Instance] Continuing ...
+01 Nov 19, 19:02:46 [Instance] Grade found : user
+01 Nov 19, 19:02:46 [GUI] Cleaned
+01 Nov 19, 19:02:46 [GUI] Starting for this grade ...
+01 Nov 19, 19:02:46 [GUI] Starting User Gui
+01 Nov 19, 19:02:48 [USER] Selection was 3
+01 Nov 19, 19:02:53 Finished Adding credit, état de finished : True
+01 Nov 19, 19:02:53 [GUI] Starting User Gui
+01 Nov 19, 19:03:01 [Stop]
+01 Nov 19, 19:03:02 |-- [GUI] Killed
+01 Nov 19, 19:03:02 |-- [MFRC522] Killed
+01 Nov 19, 19:03:02 |-- [DataBase] Killed
+01 Nov 19, 19:03:02 [Stop]
+01 Nov 19, 19:03:23 [Start]
+01 Nov 19, 19:03:23 |-- [DataBase] Connected
+01 Nov 19, 19:03:23 |-- [MFRC522] Connected
+01 Nov 19, 19:03:24 |-- [GUI] Started
+01 Nov 19, 19:03:26 [INFO] Scanned 982884817060
+01 Nov 19, 19:03:26 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 19:03:26 |-- [DataBase] Found : j g, Grade:1, Credit:500.0, UUID:46
+01 Nov 19, 19:03:26 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 19:03:26 [Instance] Continuing ...
+01 Nov 19, 19:03:26 [Instance] Grade found : user
+01 Nov 19, 19:03:27 [GUI] Cleaned
+01 Nov 19, 19:03:27 [GUI] Starting for this grade ...
+01 Nov 19, 19:03:27 [GUI] Starting User Gui
+01 Nov 19, 19:03:28 [USER] Selection was 3
+01 Nov 19, 19:03:35 [Stop]
+01 Nov 19, 19:03:36 |-- [GUI] Killed
+01 Nov 19, 19:03:36 |-- [MFRC522] Killed
+01 Nov 19, 19:03:36 |-- [DataBase] Killed
+01 Nov 19, 19:03:36 [Stop]
+01 Nov 19, 19:06:29 [Start]
+01 Nov 19, 19:06:29 |-- [DataBase] Connected
+01 Nov 19, 19:06:29 |-- [MFRC522] Connected
+01 Nov 19, 19:06:29 |-- [GUI] Started
+01 Nov 19, 19:06:34 [INFO] Scanned 982884817060
+01 Nov 19, 19:06:34 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 19:06:34 |-- [DataBase] Found : j g, Grade:1, Credit:500.0, UUID:46
+01 Nov 19, 19:06:34 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 19:06:34 [Instance] Continuing ...
+01 Nov 19, 19:06:35 [Instance] Grade found : user
+01 Nov 19, 19:06:35 [GUI] Cleaned
+01 Nov 19, 19:06:35 [GUI] Starting for this grade ...
+01 Nov 19, 19:06:35 [GUI] Starting User Gui
+01 Nov 19, 19:06:38 [USER] Selection was 3
+01 Nov 19, 19:10:15 [Stop]
+01 Nov 19, 19:10:15 |-- [GUI] Killed
+01 Nov 19, 19:10:15 |-- [MFRC522] Killed
+01 Nov 19, 19:10:15 |-- [DataBase] Killed
+01 Nov 19, 19:10:15 [Stop]
+01 Nov 19, 19:10:15 Finished Adding credit, état de finished : True
+01 Nov 19, 19:11:00 [Start]
+01 Nov 19, 19:11:00 |-- [DataBase] Connected
+01 Nov 19, 19:11:00 |-- [MFRC522] Connected
+01 Nov 19, 19:11:00 |-- [GUI] Started
+01 Nov 19, 19:11:03 [INFO] Scanned 982884817060
+01 Nov 19, 19:11:03 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 19:11:04 |-- [DataBase] Found : j g, Grade:1, Credit:500.0, UUID:46
+01 Nov 19, 19:11:04 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 19:11:04 [Instance] Continuing ...
+01 Nov 19, 19:11:04 [Instance] Grade found : user
+01 Nov 19, 19:11:04 [GUI] Cleaned
+01 Nov 19, 19:11:04 [GUI] Starting for this grade ...
+01 Nov 19, 19:11:04 [GUI] Starting User Gui
+01 Nov 19, 19:11:06 [USER] Selection was 3
+01 Nov 19, 19:11:28 [Stop]
+01 Nov 19, 19:11:28 |-- [GUI] Killed
+01 Nov 19, 19:11:28 |-- [MFRC522] Killed
+01 Nov 19, 19:11:28 |-- [DataBase] Killed
+01 Nov 19, 19:11:28 [Stop]
+01 Nov 19, 19:11:28 Finished Adding credit, état de finished : False
+01 Nov 19, 19:18:15 [Start]
+01 Nov 19, 19:18:15 |-- [DataBase] Connected
+01 Nov 19, 19:18:15 |-- [MFRC522] Connected
+01 Nov 19, 19:18:15 |-- [GUI] Started
+01 Nov 19, 19:18:22 [INFO] Scanned 982884817060
+01 Nov 19, 19:18:22 |-- [DataBase] Searching with badge 982884817060
+01 Nov 19, 19:18:22 |-- [DataBase] Found : j g, Grade:1, Credit:500.0, UUID:46
+01 Nov 19, 19:18:22 [Instance] User with badge 982884817060 was found !
+01 Nov 19, 19:18:22 [Instance] Continuing ...
+01 Nov 19, 19:18:22 [Instance] Grade found : user
+01 Nov 19, 19:18:22 [GUI] Cleaned
+01 Nov 19, 19:18:22 [GUI] Starting for this grade ...
+01 Nov 19, 19:18:22 [GUI] Starting User Gui
+01 Nov 19, 19:18:25 [USER] Selection was 3
+01 Nov 19, 19:18:32 Finished Adding credit, état de finished : True
+01 Nov 19, 19:18:32 [GUI] Starting User Gui
+01 Nov 19, 19:18:41 [USER] Selection was 3
+01 Nov 19, 19:18:45 Finished Adding credit, état de finished : True
+01 Nov 19, 19:18:45 [GUI] Starting User Gui
+01 Nov 19, 19:19:32 [USER] Selection was 3
+01 Nov 19, 19:19:48 Finished Adding credit, état de finished : True
+01 Nov 19, 19:19:48 [GUI] Starting User Gui
+01 Nov 19, 19:19:49 [Stop]
+01 Nov 19, 19:19:49 |-- [GUI] Killed
+01 Nov 19, 19:19:49 |-- [MFRC522] Killed
+01 Nov 19, 19:19:49 |-- [DataBase] Killed
+01 Nov 19, 19:19:49 [Stop]

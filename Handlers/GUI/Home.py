@@ -22,8 +22,10 @@ class HomeHandler():
         self.i = tk.Label(self.root, image=self.ts, background="white")
         self.i.place(anchor="nw", x=0, y=0)
         #self.i.pack(side="left")
-        self.root.bind("<space>", self.bypass)
 
+        ## self.root.bind("<space>", self.bypass)
+        ## Replaced in the MFRC522 handler
+        
     def clr(self):
         self.l.destroy()
         self.i.destroy()
