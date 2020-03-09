@@ -67,7 +67,7 @@ handlers["paypal"] = paypalHandler.PayPal(paypalHandler.Token(paypal_token["id"]
 Print("|-- [PayPal] Initialised")
 
 Print("|-- [Node] ")
-subprocess.call(["node", "/home/pi/TechDistri/Handlers/PayPal/server.js", "&"])
+subprocess.call("node /home/pi/TechDistri/Handlers/PayPal/server.js &", shell=True)
 
 Print("\n")
 

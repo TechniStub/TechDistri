@@ -39,6 +39,6 @@ const requestListener = function (req, res) {
 };
 
 var server = http.createServer(requestListener);
-server = require("httpshutdown")(server);
+server = require("http-shutdown")(server);
 server.listen(3000);
 console.log("Server started");
