@@ -45,7 +45,7 @@ echo "export PYTHONPATH='${PYTHONPATH}:/home/pi/TechDistri/Handlers/MFRC522'" >>
 sudo apt-get install python3 pip3
 ```
 
-Et installez SPI-Py avec python3
+Et installez SPI-Py, paypalrestsdk et qrcode avec python3
 
 ### 2.3 MySQL
 #### 2.3.1 Installation
