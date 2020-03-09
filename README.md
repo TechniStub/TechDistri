@@ -42,10 +42,16 @@ echo "export PYTHONPATH='${PYTHONPATH}:/home/pi/TechDistri/Handlers/MFRC522'" >>
 
 #### 2.2.2 Dépendences
 ```
-sudo apt-get install python3 pip3
+sudo apt-get install python3 pip3 nodejs npm
 ```
 
-Et installez SPI-Py, paypalrestsdk et qrcode avec python3
+Et installez SPI-Py, paypalrestsdk et qrcode[pil] avec python3
+
+Installez également le package node "httpshutdown" avec
+
+```
+npm install httpshutdown
+```
 
 ### 2.3 MySQL
 #### 2.3.1 Installation

@@ -8,11 +8,15 @@ from PIL import ImageTk, Image
 import time
 import os
 import sys
+import subprocess
+import requests
+import json
 
 # Import des "Feuilles" de GUI
 import Handlers.GUI.Home as handlerGuiHome
 import Handlers.DataBase.db as databaseHandler
 import Handlers.MFRC522.handler as rfidHandler
+import Handlers.PayPal.handler as paypalHandler
 import Handlers.GUI.Admin.Level1 as handlerGuiAdmin1
 import Handlers.GUI.Admin.Level2 as handlerGuiAdmin2
 import Handlers.GUI.Admin.Level3 as handlerGuiAdmin3
@@ -47,6 +51,25 @@ def Print(data): # redéfinition de print pour qu' il aille dans un fichier de l
     f.close()
 
 Print("[Start]") # On informe que ça démare
+
+
+
+paypal_token = {}
+with open("/home/pi/TechDistri/Handlers/PayPal/token.json") as token_file:
+    data = json.load(token_file)
+    paypal_token["id"] = data["id"]
+    paypal_token["secret"] = data["secret"]
+    paypal_token["sandbox"] = data["sandbox"]
+
+ip = subprocess.check_output(["hostname", "-I"])
+handlers["paypal"] = paypalHandler.PayPal(paypalHandler.Token(paypal_token["id"], paypal_token["secret"]), sandbox=paypal_token["sandbox"], return_url="http://{}:3000/return".format(ip), cancel_url="http://{}:3000/cancel".format(ip))
+
+Print("|-- [PayPal] Initialised")
+
+Print("|-- [Node] ")
+subprocess.call(["node", "/home/pi/TechDistri/Handlers/PayPal/server.js", "&"])
+
+Print("\n")
 
 dbInst = databaseHandler.DataBaseHandler("/home/pi/TechDistri/Handlers/DataBase/params.xml") # on ouvre une instance des base de donnée avec .xml en config
 queries = dbInst.getAvailableQueries() # on récupere les différentes requetes déja disponible
@@ -157,7 +180,7 @@ def clearTk(toClr): # definition de la fonction d' éfacage du gui
         widget.destroy()
 
 def quit(): # stopper le programme
-    Print("[Stop]")
+    Print("[Stop] Started")
     try:
         root.destroy()
     except:
@@ -170,7 +193,10 @@ def quit(): # stopper le programme
     dbInst.cursor.close()
     dbInst.conn.close()
     Print("|-- [DataBase] Killed")
-    Print("[Stop]")
+    Print("|-- [PayPal] Killed")
+    requests.get("http://{}:3000/?stop=yes")
+    Print("|-- [Node] Killed")
+    Print("[Stop] Finished")
     sys.exit()
 
 root.bind('<Escape>',lambda e: quit())
