@@ -32,27 +32,27 @@ class commonGUIs():
     def changeSure(self, val):
         self.sure=val
 
-    def areSure(self, text):
+    def areSure(self, text, x_size=200):
         self.sureroot = tk.Toplevel(self.root)
         self.sureroot.transient(self.root)
         self.sureroot.grab_set()
         self.sure = 0
         self.sureroot.configure(background="white")
-        self.sureroot.geometry("{}x{}".format(200, 90))
+        self.sureroot.geometry("{}x{}".format(x_size, 90))
         self.sureroot.config(cursor="crosshair")
         self.sureroot.title("Etes vous sur ?")
         label = tk.Label(self.sureroot, text=text, bg='#fff', font=("arial", 14))
-        label.place(anchor="center", x=200/2, y=30)
+        label.place(anchor="center", x=x_size/2, y=30)
         self.oui = tk.Button(self.sureroot, text="Oui", background="#fff", command=lambda: self.changeSure(1), font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff")
-        self.oui.place(anchor="sw", x=10, y=80)
+        self.oui.place(anchor="sw", x=x_size/20, y=80)
         self.non = tk.Button(self.sureroot, text="Non", background="#fff", command=lambda: self.changeSure(2), font=("Arial", 14), highlightthickness = 0, bd = 0, bg="#fff")
-        self.non.place(anchor="se", x=200-10, y=80)
+        self.non.place(anchor="se", x=x_size-(x_size/20), y=80)
         self.sureroot.update()
         while self.sure == 0:
             self.sureroot.update()
 
         self.sureroot.destroy()
-        return self.sure
+        return self.sure == 1
 
 
     def newPopup(self, name, sizex=450, sizey=250):

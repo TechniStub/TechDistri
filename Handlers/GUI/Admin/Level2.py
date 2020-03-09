@@ -189,22 +189,23 @@ class AdminHandler():
                     while not self.continueVAR:
                         self.poproot.update()
                     sureDelete = self.commonInst.areSure("Supprimer {}".format(id))
-                    self.poproot.destroy()
-                    success = False
-                    try:
-                        self.db.edit(self.queries["deleteUserPart1"].format(id))
-                        self.db.edit(self.queries["deleteUserPart2"].format(id))
-                        self.db.edit(self.queries["deleteUserPart3"].format(id))
-                        self.db.edit(self.queries["deleteUserPart4"].format(id))
-                        success = True
-                    except:
+                    if sureDelete:
+                        self.poproot.destroy()
                         success = False
+                        try:
+                            self.db.edit(self.queries["deleteUserPart1"].format(id))
+                            self.db.edit(self.queries["deleteUserPart2"].format(id))
+                            self.db.edit(self.queries["deleteUserPart3"].format(id))
+                            self.db.edit(self.queries["deleteUserPart4"].format(id))
+                            success = True
+                        except:
+                            success = False
 
-                    if(success):
-                        text="L'utilisateur {} avec le badge {} a été supprimé".format(id, newId)
-                    else:
-                        text="Erreur : L'utilisateur {} avec le badge {} n'a pas pu etre suprimé".format(id, newId)
-                    self.commonInst.info(text, sizex=len(text)*5, line=3, sizey=150)
+                        if(success):
+                            text="L'utilisateur {} avec le badge {} a été supprimé".format(id, newId)
+                        else:
+                            text="Erreur : L'utilisateur {} avec le badge {} n'a pas pu etre suprimé".format(id, newId)
+                        self.commonInst.info(text, sizex=len(text)*5, line=3, sizey=150)
             elif buttonId == 3:
                 print("Badges - Add / Del Grade")
                 self.commonInst.newPopup("Grader un badge", sizey=150)

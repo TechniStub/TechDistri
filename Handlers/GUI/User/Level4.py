@@ -3,9 +3,12 @@
 #
 
 import tkinter as tk
+from PIL import ImageTk, Image
+import json
+from time import sleep
 
 class UserHandler():
-    def __init__(self, root, rfid, db, queries, commonGUI, supervisor):
+    def __init__(self, root, rfid, db, queries, commonGUI, supervisor, handlers):
         self.root = root
         self.rfid = rfid
         self.db = db
@@ -16,6 +19,7 @@ class UserHandler():
         self.KeyboardQty = 0
         self.finished = False
         self.supervisor = supervisor
+        self.handlers = handlers
 
     def rfidGet(self):
         self.supervisor.data["iswWaiting"] = True
@@ -107,22 +111,105 @@ class UserHandler():
         self.button.append(tk.Button(self.root, font=("arial", 14), text="<-", command=lambda k="<-": self.numericalKeyboardEventHadler(k), highlightthickness = 0, bd = 0, bg="#fff"))
         self.button[4].place(anchor="center", x=(2*50+75), y=(3*50+self.height/2))
 
-    def validate(self):
+    def validate(self, paypal=1):
         #self._user = self.user
         #self.rfidGet()
 
+        print(type(self.handlers))
+
         value = int(self.KeyboardReturn[0])*100+int(self.KeyboardReturn[1])*10+int(self.KeyboardReturn[2])*1+int(self.KeyboardReturn[3])*0.1
-        proceed = self.commonInst.areSure("Etes-vous sur de vouloir proceder à la transaction de {}".format(value))
+        proceed = self.commonInst.areSure("Proceder à la transaction de {}€".format(value), x_size=350)
 
         if proceed:
-            print(self.user)
-            if len(self.user) == 0:
-                self.connect()
+            if paypal:
+                for widget in self.widgets:
+                    widget.destroy()
+                for button in self.button:
+                    if type(button) == list:
+                        for _button in button:
+                            _button.destroy()
+                    else:
+                        button.destroy()
+
+                res, payment = self.handlers["paypal"].createPayment(value)
+
+                print(res, " ", str(float(value)))
+                print(payment.error)
+
+                self.handlers["supervisor"].Print("[PayPal] Started Payment procedure for {}EUR".format(value))
+
+                self.handlers["paypal"].getURL()  # "create" paypal payment url
+
+                qrCode = self.handlers["paypal"].getQR()
+                qrCode = ImageTk.PhotoImage(qrCode.resize((400, 400), Image.ANTIALIAS))
+                qrCodeLabel = tk.Label(self.root, image=qrCode)
+                qrCodeLabel.place(anchor="center", x=int(self.width / 2), y=int(self.height / 2)+75)
+
+                waitLabel = tk.Label(self.root, text="En Attente d'une connection ...", font=("arial", 18), bg="#fff")
+                waitLabel.place(anchor="center", x=int(self.width / 2), y=150)
+
+                data = {}
+
+                while True and not self.handlers["supervisor"].bypass:
+                    self.root.update()
+                    try:
+                        with open('/home/pi/TechDistri/Handlers/PayPal/db.json') as json_file:
+                            data = json.load(json_file)
+                            if self.handlers["paypal"].id in data:
+                                self.handlers["supervisor"].Print("[PayPal] Transaction of {}EUR validated".format(value))
+                                self.handlers["supervisor"].blocked = True
+                                break
+                            else:
+                                print("Waiting ", end="")
+                                sleep(0.4)
+                                for x in range(3):
+                                    print(".", end="")
+                                    sleep(0.4)
+                                print()
+                    except:
+                        print("Something went wrong")
+
+                qrCodeLabel.destroy()
+                waitLabel["text"] = "Validation en cours ... "
+
+                self.root.update()
+
+                if self.handlers["paypal"].acceptPayment(data[self.handlers["paypal"].id]["PayerID"]):  # return True or False
+                    self.handlers["supervisor"].Print("[PayPal] Payment[%s] execute successfully" % payment.id)
+                    waitLabel["text"] = "En attente de PayPal ..."
+
+                    self.root.update()
+
+                    while True and not self.handlers["supervisor"].bypass:
+                        self.root.update()
+                        tr = self.handlers["paypal"].getTransactionState()
+
+                        if tr[0] == "approved":
+                            self.handlers["supervisor"].Print(str(tr[1].payer))
+                            self.handlers["supervisor"].Print("[PayPal] Payment approved by " + str(tr[1].payer.payer_info.email) +", aka "+ str(tr[1].payer.payer_info.first_name) + " " + str(tr[1].payer.payer_info.last_name))
+                            break
+
+                    if not self.handlers["supervisor"].bypass:
+                        waitLabel["text"] = "Validé, Merci :) "
+                        print("************* VALIDATED *************")
+                        self.db.edit(self.queries["addCredits"].format(value, self.session["uuid"]))
+                        self.db.edit(self.queries["transacFromServer"].format(self.session["uuid"], value, "Input"))
+
+                    self.root.update()
+                else:
+                    self.handlers["supervisor"].Print("[PayPal]" + str(payment.error))
+                    waitLabel["text"] = "Une erreur est survenue ...\nContactez un admin"
+                    self.root.update()
+                self.handlers["supervisor"].blocked = False
             else:
-                if self.user["Grade"] <= 0: # is admin
-                    self.db.edit(self.queries["addCredits"].format(value, self.session["uuid"]))
-                    self.db.edit(self.queries["transacFromServer"].format(self.session["uuid"], value, "Input"))
-            self.cancel(validated=True)
+                print(self.user)
+                if len(self.user) == 0:
+                    self.connect()
+                else:
+                    if self.user["Grade"] <= 0: # is admin
+                        self.db.edit(self.queries["addCredits"].format(value, self.session["uuid"]))
+                        self.db.edit(self.queries["transacFromServer"].format(self.session["uuid"], value, "Input"))
+                self.cancel(validated=True)
         else:
             pass
 
@@ -136,32 +223,75 @@ class UserHandler():
             else:
                 pass
 
-    def set(self, session):
+    def clearVar(self):
+        self.user = {}
+        self.KeyboardReturn = [0, 0, 0, 0]
+        self.KeyboardQty = 0
         self.finished = False
-        self.session = session
+        self.handlers["paypal"].id = None
+        self.handlers["paypal"].url = None
+        self.handlers["paypal"].payment = None
+
+    def set(self, session):
+        self.clearVar()
         self.height = self.root.winfo_screenheight()
         self.width = self.root.winfo_screenwidth()
+        self.paypalButton = tk.Button(self.root, text="PayPal", height=1, width=20, command=lambda s=session, ppl=1: self.setCommon(s, paypal=ppl),
+                                     font=("Arial", 18), bd=0, highlightthickness=0, bg="#fd3303",
+                                     activebackground="#000000", fg="#ffffff", activeforeground="#ffffff", pady=10)
+        self.paypalButton.place(anchor="center", x=int(self.width / 2), y=int(self.height / 3) + 0)
 
-        self.connectAdmin = tk.Button(self.root, text="Connection Requise", height=1, width=20, command=self.connect, font=("Arial", 18), bd=0, highlightthickness = 0, bg="#fd3303", \
-                                        activebackground="#000000", fg="#ffffff", activeforeground="#ffffff", pady=10)
+        self.monnaieButton = tk.Button(self.root, text="Monnaie", height=1, width=20, command=lambda s=session, ppl=0: self.setCommon(s, paypal=ppl),
+                                     font=("Arial", 18), bd=0, highlightthickness=0, bg="#fd3303",
+                                     activebackground="#000000", fg="#ffffff", activeforeground="#ffffff", pady=10)
+        self.monnaieButton.place(anchor="center", x=int(self.width / 2), y=int(self.height / 3) + 75)
 
-        self.connectAdmin.place(anchor="center", x=int(self.width/2), y=int(self.height/3))
+    def setCommon(self, session, paypal=1):
+        self.widgets = []
+
+        self.finished = False
+        self.session = session
+
+        self.paypalButton.destroy()
+        self.monnaieButton.destroy()
+
+        self.soldeAjout = tk.Label(self.root, text="Ajout via PayPal" if paypal else "Ajout via Monnaie", font=("Arial", 18), bg="#fff")
+        self.soldeAjout.place(anchor="center", x=int(self.width / 2), y=int(self.height / 4))
+        self.widgets.append(self.soldeAjout)
+
+        if not paypal:
+            self.connectAdmin = tk.Button(self.root, text="Connection Requise", height=1, width=20, command=self.connect,
+                                          font=("Arial", 18), bd=0, highlightthickness=0, bg="#fd3303",
+                                          activebackground="#000000", fg="#ffffff", activeforeground="#ffffff", pady=10)
+
+            self.connectAdmin.place(anchor="center", x=int(self.width / 2), y=int(self.height / 3))
+            self.widgets.append(self.connectAdmin)
+
+            self.AdminInfo = tk.Label(self.root, text="", font=("arial", 14), bg="#fff")
+            self.AdminInfo.place(anchor="center", x=int(self.width / 2), y=int(self.height / 3) + 50)
+            self.widgets.append(self.connectAdmin)
 
         self.soldeAjout = tk.Label(self.root, text="  0 0 0 . 0  ", font=("Arial", 18), bg="#e2e2e2")
-        self.soldeAjout.place(anchor="center", x=int(2*self.width/3), y=int(self.height/2))
+        self.soldeAjout.place(anchor="center", x=int(2 * self.width / 3), y=int(self.height / 2))
+        self.widgets.append(self.soldeAjout)
 
-        self.AdminInfo = tk.Label(self.root, text="", font=("arial", 14), bg="#fff")
-        self.AdminInfo.place(anchor="center", x=int(self.width/2), y=int(self.height/3)+50)
+        self._validate = tk.Button(self.root, text="Valider", font=("arial", 14), command=lambda ppl=paypal: self.validate(paypal=ppl), bg="#fd3303",
+                                   activebackground="#000000", fg="#ffffff", activeforeground="#ffffff", pady=2, bd=0,
+                                   highlightthickness=0)
+        self._validate.place(anchor="center", x=int(2 * self.width / 3), y=int(self.height / 2) + 50)
+        self.widgets.append(self._validate)
 
-        self._validate = tk.Button(self.root, text="Valider", font=("arial", 14), command=self.validate, bg="#fd3303", activebackground="#000000", fg="#ffffff", activeforeground="#ffffff", pady=2, bd=0, highlightthickness = 0)
-        self._validate.place(anchor="center", x=int(2*self.width/3), y=int(self.height/2)+50)
-
-        self._cancel = tk.Button(self.root, text="Annuler", font=("arial", 14), command=self.cancel, bg="#fd3303", activebackground="#000000", fg="#ffffff", activeforeground="#ffffff", pady=2, bd=0, highlightthickness = 0)
-        self._cancel.place(anchor="center", x=int(2*self.width/3), y=int(self.height/2)+100)
+        self._cancel = tk.Button(self.root, text="Annuler", font=("arial", 14), command=self.cancel, bg="#fd3303",
+                                 activebackground="#000000", fg="#ffffff", activeforeground="#ffffff", pady=2, bd=0,
+                                 highlightthickness=0)
+        self._cancel.place(anchor="center", x=int(2 * self.width / 3), y=int(self.height / 2) + 100)
+        self.widgets.append(self._cancel)
 
         print("[Info] Actual grade : {}".format(session["grade"]))
 
-        if session["grade"] == 0 or session["grade"] == (0-1):
-            self.connect(_user=session)
+        if not paypal:
+            if session["grade"] == 0 or session["grade"] == (0 - 1):
+                self.connect(_user=session)
 
         self.numericalKeyboard()
+

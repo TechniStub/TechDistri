@@ -21,6 +21,9 @@ class PayPal():
 
         print('sandbox' if sandbox else 'live')
 
+    # def __getitem__(self, item):
+    #     return self
+
     def createPayment(self, value, curency="EUR"):
         self.payment = paypalrestsdk.Payment({
 

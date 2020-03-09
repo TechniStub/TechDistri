@@ -78,5 +78,5 @@ class UserHandler():
                 self.labels[index][2].place(anchor="nw", x=350, y=(index*40)+200); self.labels[index][2]["text"] = self.shownTransac[index]["value"]
                 self.total += float(self.transac[index]["value"])
 
-        self.lhisto = tk.Label(self.root, text="Reste a payer :   "+str(self.total), font=("Arial", 18), anchor='center', background="white")
+        self.lhisto = tk.Label(self.root, text="Crédit restant :   "+str(self.total)+"EUR", font=("Arial", 18), anchor='center', background="white")
         self.lhisto.place(anchor="se", x=self.width-75, y=self.height-150)

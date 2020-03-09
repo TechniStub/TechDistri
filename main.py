@@ -61,15 +61,20 @@ with open("/home/pi/TechDistri/Handlers/PayPal/token.json") as token_file:
     paypal_token["secret"] = data["secret"]
     paypal_token["sandbox"] = data["sandbox"]
 
-ip = subprocess.check_output(["hostname", "-I"])
-handlers["paypal"] = paypalHandler.PayPal(paypalHandler.Token(paypal_token["id"], paypal_token["secret"]), sandbox=paypal_token["sandbox"], return_url="http://{}:3000/return".format(ip), cancel_url="http://{}:3000/cancel".format(ip))
+print(str(paypal_token))
+
+ip = subprocess.check_output(["hostname", "-I"]).decode()
+ip = ip[:-2]
+
+print(ip)
+
+handlers["paypal"] = paypalHandler.PayPal(paypalHandler.Token(paypal_token["id"], paypal_token["secret"]), sandbox=bool(paypal_token["sandbox"]), return_url="http://{}:3000/payment/execute".format(ip), cancel_url="http://{}:3000/payment/cancel".format(ip))
 
 Print("|-- [PayPal] Initialised")
 
 Print("|-- [Node] ")
-subprocess.call("node /home/pi/TechDistri/Handlers/PayPal/server.js &", shell=True)
 
-Print("\n")
+subprocess.call("node /home/pi/TechDistri/Handlers/PayPal/server.js &", shell=True)
 
 dbInst = databaseHandler.DataBaseHandler("/home/pi/TechDistri/Handlers/DataBase/params.xml") # on ouvre une instance des base de donnée avec .xml en config
 queries = dbInst.getAvailableQueries() # on récupere les différentes requetes déja disponible
@@ -194,7 +199,7 @@ def quit(): # stopper le programme
     dbInst.conn.close()
     Print("|-- [DataBase] Killed")
     Print("|-- [PayPal] Killed")
-    requests.get("http://{}:3000/?stop=yes")
+    requests.get("http://{}:3000/?stop=yes".format(ip))
     Print("|-- [Node] Killed")
     Print("[Stop] Finished")
     sys.exit()
@@ -216,6 +221,8 @@ def update(): # update du gui
 handlers["supervisor"] = supervisor() # Seuls les classes et les librairies sont transmises en pointeur
 handlers["supervisor"].init()
 
+handlers["supervisor"].Print = Print
+
 #definition des Instances des Feuilles
 handlers["home"] = handlerGuiHome.HomeHandler(root, ts, rfidInst)
 handlers["keyboard"] = handlerVirualKeyboard.VirtualKeyboard(name="Clavier")
@@ -227,7 +234,7 @@ handlers["user"] = {}
 handlers["user"]["level1"] = handlerGuiUser1.UserHandler(root, ts)
 handlers["user"]["level2"] = handlerGuiUser2.UserHandler(root, ts)
 handlers["user"]["level3"] = handlerGuiUser3.UserHandler(root, ts, scrollUp, scrollDown)
-handlers["user"]["level4"] = handlerGuiUser4.UserHandler(root, rfidInst, dbInst, queries, commonGUIinst, handlers["supervisor"])
+handlers["user"]["level4"] = handlerGuiUser4.UserHandler(root, rfidInst, dbInst, queries, commonGUIinst, handlers["supervisor"], handlers)
 handlers["home"].set() # on envoie le gui
 
 session["bypassAll"] = False # on désactive le bypass
@@ -235,14 +242,17 @@ session["supervisor"] = handlers["supervisor"]
 handlers["supervisor"].bypass = False
 
 def deco(): # activation du bypass
-    session["bypassAll"]= True
-    handlers["supervisor"].bypass = True
-    print("Deconnexion !")
+    if not handlers["supervisor"].blocked:
+        session["bypassAll"]= True
+        handlers["supervisor"].bypass = True
+        print("Deconnexion !")
 
 def gotohome(): # activation du bypass
-    session["bypassHome"]= True
-    session["bypassAll"] = True
-    print("Going to home")
+    if not handlers["supervisor"].blocked:
+        session["bypassHome"]= True
+        session["bypassAll"] = True
+        handlers["supervisor"].bypass = True
+        print("Going to home")
 
 def showRemanent(): # affichage des infos de base de l'utilisateur
     height = root.winfo_screenheight()
@@ -264,6 +274,8 @@ def showRemanent(): # affichage des infos de base de l'utilisateur
 
     lhome = tk.Button(root, image=home, background="white", highlightthickness = 0, bd = 0, bg="#fff", command=gotohome)
     lhome.place(anchor="sw", x=30, y=height-18)
+
+handlers["supervisor"].showRemanent = showRemanent
 
 def userHandler():
     Print("[GUI] Starting User Gui")
@@ -332,6 +344,7 @@ def userHandler():
     elif handlers["user"]["level1"].selection == 3:
         showRemanent()
 
+        handlers["supervisor"].bypass = False
         handlers["user"]["level4"].set(session)
 
         while (not handlers["user"]["level4"].finished) and (not session["bypassAll"]):
@@ -462,10 +475,12 @@ while True: # boucle infinie
                             while not(actualSession.finished) and not(actualSession.pageChanging) and session["bypassAll"] == False:
                                 update()
                             if actualSession.pageChanging:
-                                if actualSessionId == 2:
+                                if actualSessionId == 2: # Page 2/2
+                                    print("!!!----------- LINE 479")
                                     actualSession = handlers["admin"]["level3"]
                                     actualSessionId = 3
-                                else:
+                                else: # Page 1/2
+                                    print("!!!----------- LINE 483")
                                     actualSession = handlers["admin"]["level2"]
                                     actualSessionId = 2
                                 handlers["admin"]["level2"].pageChanging = False

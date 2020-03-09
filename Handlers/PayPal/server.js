@@ -19,14 +19,14 @@ const requestListener = function (req, res) {
             })
         }
 
-        let json = require("./db.json");
+        let json = require("/home/pi/TechDistri/Handlers/PayPal/db.json");
 
         try {
             json[u.query["paymentId"]] = u.query;
             console.log(json);
 
             let data = JSON.stringify(json);
-            fs.writeFileSync('db.json', data);
+            fs.writeFileSync("/home/pi/TechDistri/Handlers/PayPal/db.json", data);
 
             res.statusCode=200;
             res.end("Ok");
