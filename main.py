@@ -228,7 +228,7 @@ handlers["home"] = handlerGuiHome.HomeHandler(root, ts, rfidInst)
 handlers["keyboard"] = handlerVirualKeyboard.VirtualKeyboard(name="Clavier")
 handlers["admin"] = {}
 handlers["admin"]["level1"] = handlerGuiAdmin1.AdminHandler(root, ts, home)
-handlers["admin"]["level2"] = handlerGuiAdmin2.AdminHandler(root, ts, home, rfidInst, dbInst, queries, handlers["keyboard"], trash, commonGUIinst, scrollLeft, scrollRight, session, userEdit, userPlus, userMoins, stockVoir, stockModify, produitsModify, produitsSee, produitsAddDel)
+handlers["admin"]["level2"] = handlerGuiAdmin2.AdminHandler(root, ts, home, rfidInst, dbInst, queries, handlers["keyboard"], trash, commonGUIinst, scrollLeft, scrollRight, session, userEdit, userPlus, userMoins, stockVoir, stockModify, produitsModify, produitsSee, produitsAddDel, handlers)
 handlers["admin"]["level3"] = handlerGuiAdmin3.AdminHandler(root, ts, home, rfidInst, dbInst, queries, handlers["keyboard"], trash, commonGUIinst, scrollLeft, scrollRight, session)
 handlers["user"] = {}
 handlers["user"]["level1"] = handlerGuiUser1.UserHandler(root, ts)
@@ -262,6 +262,7 @@ def showRemanent(): # affichage des infos de base de l'utilisateur
 
     lreset = tk.Button(root, image=exit, highlightthickness = 0, bd = 0, bg="#fff", command=deco)
     lreset.place(anchor="se", x=width-30, y=height-18)
+    handlers["deco"] = lreset
 
     lpnom = tk.Label(root, text="Prenom : "+str(session["pnom"]), font=("Arial", 14), anchor='n', background="white")
     lpnom.place(anchor="nw", x=30, y=48)
@@ -274,6 +275,7 @@ def showRemanent(): # affichage des infos de base de l'utilisateur
 
     lhome = tk.Button(root, image=home, background="white", highlightthickness = 0, bd = 0, bg="#fff", command=gotohome)
     lhome.place(anchor="sw", x=30, y=height-18)
+    handlers["gotohome"] = lhome
 
 handlers["supervisor"].showRemanent = showRemanent
 

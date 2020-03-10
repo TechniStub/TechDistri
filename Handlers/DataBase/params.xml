@@ -11,7 +11,7 @@
         <query name="getParameters">SELECT * FROM parameters.Param;</query>
         <query name="getProduct">SELECT l.Id, l.Row, l.Col, l.isPresent, r.Nom, r.NomC, r.Price, s.Stock, s.Min FROM products.Place l, products.Products r, products.Stock s WHERE l.Id = r.Id and l.Id = s.Id and l.row = {} and l.col = {};</query>
         <query name="getProducts">SELECT l.Id, l.Row, l.Col, l.isPresent, r.Nom, r.NomC, r.Price, s.Stock, s.Min FROM products.Place l, products.Products r, products.Stock s WHERE l.Id = r.Id and l.Id = s.Id;</query>
-        <query name="updateStock">UPDATE products.Stock SET Stock = {} WHERE Id = {};</query>
+        <query name="updateStockManual">UPDATE products.Stock SET Stock = {} WHERE Id = {};</query>
         <query name="getTransaction">SELECT * FROM users.transactions WHERE Id1 = {} or Id2 = {} ORDER BY Date DESC, Id DESC;</query>
         <query name="badgeToUuid">SELECT * FROM users.Badges WHERE Data = "{}";</query>
         <query name="createUser">INSERT INTO users.Users (Nom, PNom) VALUES ("{}", "{}");</query>
@@ -29,5 +29,6 @@
         <query name="updateCredits">UPDATE users.Credits SET Value = Value WHERE Id={}</query> <!-- do nothing -->
         <query name="addCredits">UPDATE users.Credits SET Value = Value+{} WHERE Id={}</query>
         <query name="updateGrade">UPDATE users.Users SET Grade={} WHERE  Id={};</query>
+        <query name="showProducts">SELECT place.id, place.Row, place.Col, prod.NomC, stock.Stock FROM products.Place place, products.Products prod, products.Stock stock WHERE place.Id = prod.Id and place.Id = stock.Id;</query>
     </queries>
 </data>
